@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app_icon="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:emojicon="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/isTypingContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingStart="8dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/is_typing_icon" />
+
+        <TextView
+            android:id="@+id/isTyping"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="2dp"
+            android:scaleType="fitCenter"
+            android:text="Someone is typing"
+            android:textColor="#FFFFFF" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            card_view:cardCornerRadius="3dp"
+            card_view:cardElevation="3dp">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/emojiIcon"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/happy" />
+
+                <io.github.rockerhieu.emojicon.EmojiconEditText
+                    android:id="@+id/editEmojicon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/camera"
+                    android:layout_toRightOf="@+id/emojiIcon"
+                    android:background="@android:color/transparent"
+                    android:hint="Type a message"
+                    android:inputType="textMultiLine"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="5dp"
+                    emojicon:emojiconAlignment="baseline"
+                    emojicon:emojiconSize="32sp" />
+
+                <ImageView
+                    android:id="@+id/camera"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/camera"
+                    android:visibility="gone" />
+
+                <ImageButton
+                    android:id="@+id/mentionBtn"
+                    android:layout_width="50dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/mentionshape"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="8dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icperson"
+                    android:text="Mntn"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/presenceBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="-20dp"
+                    android:layout_toLeftOf="@+id/mentionBtn"
+                    android:text="1"
+                    android:textColor="#FFFFFF" />
+
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/send"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_send_white_36pt"
+            app_icon:backgroundTint="@color/colorPrimary"
+            app_icon:elevation="3dp"
+            app_icon:fabSize="normal" />
+    </LinearLayout>
+
+    <fragment
+        android:id="@+id/emojicons"
+        class="io.github.rockerhieu.emojicon.EmojiconsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="220dp" />
+</LinearLayout>

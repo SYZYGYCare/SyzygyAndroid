@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_registerfor"
+        android:icon="@drawable/ic_register_for_non_active"
+        android:title="Register For" />
+    <item
+        android:id="@+id/nav_payment"
+        android:icon="@drawable/ic_payment_drawer_non_active"
+        android:title="Payment" />
+    <item
+        android:id="@+id/nav_emergencycontact"
+        android:icon="@drawable/ic_emergency_drawer_non_active"
+        android:title="Emergency Contact" />
+    <item
+        android:id="@+id/nav_setting"
+        android:icon="@drawable/ic_setting_drawer_non_active"
+        android:title="Setting" />
+
+    <item
+        android:id="@+id/nav_trustbadges"
+        android:icon="@drawable/ic_trust_badges_non_active"
+        android:title="Trust Badges" />
+    <item
+        android:id="@+id/nav_about"
+        android:icon="@drawable/ic_about_drawer_non_active"
+        android:title="About" />
+    <item
+        android:id="@+id/nav_privacypolicy"
+        android:icon="@drawable/ic_privacy_policy_non_active"
+        android:title="Privacy Policy" />
+    <item
+        android:id="@+id/nav_termofservice"
+        android:icon="@drawable/ic_terms_service_non_active"
+        android:title="Term of Service" />
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/ic_logout_drawer_non_active"
+        android:title="Logout" />
+</menu>

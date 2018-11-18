@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_trust_budges"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimen_10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_6dp"
+                android:drawableLeft="@drawable/ic_mobile"
+                android:drawablePadding="@dimen/dimen_15dp"
+                android:gravity="center_vertical"
+                android:text="Verify Mobile No."
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_size_large" />
+
+            <ImageView
+                android:id="@+id/trustBadgesActiveMobile"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_trust_active" />
+
+            <ImageView
+                android:id="@+id/trustBadgesNonActiveMobile"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_trust_non_active"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_2dp"
+            android:background="#b3b3b3" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimen_10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="@dimen/text_normal_padding"
+                android:gravity="center_vertical"
+                android:text="Verify Email Id"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_size_large" />
+
+            <ImageView
+                android:id="@+id/trustBadgesActiveEmail"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_trust_active" />
+
+            <ImageView
+                android:id="@+id/trustBadgesNonActiveEmail"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_trust_non_active"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_2dp"
+            android:background="#b3b3b3" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimen_10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_bank_info"
+                android:drawablePadding="@dimen/text_normal_padding"
+                android:gravity="center_vertical"
+                android:text="Account(Bank Info)"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_size_large" />
+
+            <ImageView
+                android:id="@+id/trustBadgesActiveAccount"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_trust_active" />
+
+            <ImageView
+                android:id="@+id/trustBadgesNonActiveAccount"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_trust_non_active"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_2dp"
+            android:background="#b3b3b3" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimen_10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_police_verification"
+                android:drawablePadding="@dimen/text_normal_padding"
+                android:gravity="center_vertical"
+                android:text="Document Verification"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_size_large" />
+
+            <ImageView
+                android:id="@+id/trustBadgesActivePolice"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_trust_active" />
+
+            <ImageView
+                android:id="@+id/trustBadgesNonActivePolice"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_trust_non_active"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_2dp"
+            android:background="#b3b3b3" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimen_10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_profile_picture"
+                android:drawablePadding="@dimen/text_normal_padding"
+                android:gravity="center_vertical"
+                android:text="Profile Picture"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_size_large" />
+
+            <ImageView
+                android:id="@+id/trustBadgesActiveProfile"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_trust_active" />
+
+            <ImageView
+                android:id="@+id/trustBadgesNonActiveProfile"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_trust_non_active"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_2dp"
+            android:background="#b3b3b3" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimen_10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_share"
+                android:drawablePadding="@dimen/text_normal_padding"
+                android:gravity="center_vertical"
+                android:text="Social Links"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_size_large" />
+
+            <ImageView
+                android:id="@+id/trustBadgesActiveSocial"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_trust_active" />
+
+            <ImageView
+                android:id="@+id/trustBadgesNonActiveSocial"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_trust_non_active"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_2dp"
+            android:background="#b3b3b3" />
+    </LinearLayout>
+
+    <!-- <include layout="@layout/tool_bar" />
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_below="@id/tool_bar"
+         android:gravity="center">
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_margin="10dp"
+             android:orientation="vertical"
+             android:padding="@dimen/dimen_8dp">
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal"
+                 android:padding="8dp"
+                 android:weightSum="2.5">
+
+                 <EditText
+                     android:id="@+id/id_verfiedmobileno"
+                     android:layout_width="0dp"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="2"
+                     android:drawableLeft="@drawable/ic_verify_no"
+                     android:drawablePadding="@dimen/dimen_10dp"
+                     android:hint="Verfied Mobile No."
+                     android:padding="@dimen/dimen_8dp" />
+
+
+             </LinearLayout>
+
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal"
+                 android:padding="8dp"
+                 android:weightSum="2">
+
+                 <EditText
+                     android:id="@+id/id_verfiedemailid"
+                     android:layout_width="0dp"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="2"
+                     android:drawableLeft="@drawable/ic_verify_email"
+                     android:drawablePadding="@dimen/dimen_10dp"
+                     android:hint="Verify Email ID " />
+
+
+             </LinearLayout>
+
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal"
+                 android:padding="8dp"
+                 android:weightSum="2">
+
+
+                 <EditText
+                     android:id="@+id/id_verfiedbankinfo"
+                     android:layout_width="0dp"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="2"
+                     android:drawableLeft="@drawable/ic_bank_info"
+                     android:drawablePadding="@dimen/dimen_10dp"
+                     android:hint="Bank Info " />
+
+
+             </LinearLayout>
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal"
+                 android:padding="8dp"
+                 android:weightSum="2">
+
+                 <EditText
+                     android:id="@+id/id_verfiedpolice"
+                     android:layout_width="0dp"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="2"
+                     android:drawableLeft="@drawable/ic_police_verification"
+                     android:drawablePadding="@dimen/dimen_10dp"
+                     android:hint="Police Verify  "
+                     android:padding="@dimen/dimen_8dp" />
+
+
+             </LinearLayout>
+
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal"
+                 android:padding="8dp"
+                 android:weightSum="2">
+
+
+                 <EditText
+                     android:id="@+id/id_verfiedprofilepic"
+                     android:layout_width="0dp"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="2"
+                     android:drawableLeft="@drawable/user_profile_pic"
+                     android:drawablePadding="@dimen/dimen_10dp"
+                     android:hint="Profile Picture" />
+
+
+             </LinearLayout>
+
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal"
+                 android:padding="8dp"
+                 android:weightSum="2">
+
+                 <EditText
+                     android:id="@+id/id_verfiedsociallink"
+                     android:layout_width="0dp"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="2"
+                     android:drawableLeft="@drawable/ic_upload_document"
+                     android:drawablePadding="@dimen/dimen_10dp"
+                     android:hint="Social link " />
+
+
+             </LinearLayout>
+
+         </LinearLayout>
+
+     </LinearLayout>-->
+</ScrollView>

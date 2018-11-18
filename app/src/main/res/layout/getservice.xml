@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="90dp"
+    android:background="@drawable/list_item_selector"
+    android:layout_height="110dp">
+
+    <LinearLayout
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:background="@drawable/oval_shape">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="@dimen/dimen_4dp"
+                android:src="@drawable/ic_caregiver_home"
+                android:layout_centerInParent="true"
+                android:id="@+id/service_imageview"/>
+
+        </RelativeLayout>
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/dimen_4dp"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/dimen_12dp"
+            android:id="@+id/service_Tv_name"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

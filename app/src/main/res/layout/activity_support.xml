@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dollop.syzygy.activity.client.SupportActivity">
+
+    <include layout="@layout/tool_bar"
+        android:id="@id/tool_bar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tool_bar"
+        android:padding="@dimen/dimen_16dp"
+        android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/supportReportHrsET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_16dp"
+                    android:imeOptions="actionNext"
+                    android:inputType="time"
+                    android:background="@drawable/clientpop"
+                    android:hint="Reported Hours..."/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/supportActualHrsET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Actual Hours..."
+                    android:imeOptions="actionNext"
+                    android:inputType="time"
+                    android:background="@drawable/clientpop"
+                    android:padding="@dimen/dimen_16dp"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+
+        <EditText
+            android:id="@+id/supportReasonET"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_120dp"
+            android:background="@drawable/clientpop"
+            android:hint="Reason.."
+            android:gravity="start"
+            android:inputType="text"
+            android:imeOptions="actionDone"
+            android:padding="@dimen/dimen_16dp"
+            android:layout_marginTop="@dimen/dimen_20dp"/>
+
+        <Button
+            android:id="@+id/supportSubmitBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:background="@drawable/btn_red"
+            android:text="Submit"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:layout_gravity="right"/>
+<!--
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:text="fhkasdf fdskj"
+            android:textSize="@dimen/text_size_normal"
+            android:gravity="center"/>-->
+    </LinearLayout>
+
+</RelativeLayout>

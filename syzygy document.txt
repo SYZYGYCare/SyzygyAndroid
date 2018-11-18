@@ -1,0 +1,3 @@
+Hello, In this ziped folder in app folder it have jks file.
+Key alies:syzygy
+and all kind password which requierd for generate signed apk same as alies name/password:syzygy

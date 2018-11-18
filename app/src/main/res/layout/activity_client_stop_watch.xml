@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main">
+
+    <include layout="@layout/tool_bar_caregiver" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tool_bar">
+
+        <ImageView
+            android:layout_width="@dimen/dimen_350dp"
+            android:layout_height="@dimen/dimen_350dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/clock_in_out_green_circle" />
+
+        <TextView
+            android:id="@+id/careGiverStopWatchText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="00:00"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_60dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/small_margin"
+        android:background="@drawable/data"
+        android:padding="@dimen/dimen_8dp"
+        app:cardCornerRadius="15dp"
+        app:elevation="10dp">
+
+        <LinearLayout
+            android:id="@+id/id_linearlayoutfirst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/id_hireyurimage"
+                    android:layout_width="@dimen/dimen_80dp"
+                    android:layout_height="@dimen/dimen_80dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/user_profile_pic" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/id_txtname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <RatingBar
+                            android:id="@+id/ratingBar"
+                            style="@style/RatingBar"
+                            android:visibility="visible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:max="5" />
+                    </RelativeLayout>
+
+
+
+                    <!--<RatingBar-->
+                    <!--android:id="@+id/listitemrating"-->
+                    <!--style="@android:attr/ratingBarStyleSmall"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="fill_parent"-->
+                    <!--android:isIndicator="true"-->
+                    <!--android:max="4"-->
+                    <!--android:scaleX=".5"-->
+                    <!--android:scaleY=".5"-->
+                    <!--android:transformPivotX="0dp"-->
+                    <!--android:transformPivotY="0dp" />-->
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/colorPrimaryDark" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

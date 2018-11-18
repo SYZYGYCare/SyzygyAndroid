@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main"
+    android:orientation="vertical">
+
+    <include layout="@layout/tool_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tool_bar"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_5dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="5"
+            android:background="@drawable/data"
+            android:padding="@dimen/dimen_8dp">
+
+            <Spinner
+                android:id="@+id/EtTypeAmbolId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:drawableLeft="@drawable/ic_ambulance_home"
+                android:hint="Type of Ambulance"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/EtVehileRegistrationNoIdId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/data"
+            android:drawableLeft="@drawable/ic_driver_details"
+            android:hint=" Vehical No./Reg.Details"
+            android:padding="@dimen/dimen_5dp"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/EtVehileModelNoId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/data"
+            android:drawableLeft="@drawable/ic_driver_details"
+            android:hint="Vehical Model No"
+            android:padding="@dimen/dimen_5dp"
+            android:textSize="16sp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="5"
+            android:background="@drawable/data"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/addressId"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:scaleType="fitXY" />
+
+            <Button
+                android:id="@+id/clickAddressId"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/dimen_5dp"
+                android:text="Address Document"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="5"
+            android:background="@drawable/data"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/lincensId"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:scaleType="fitXY" />
+
+            <Button
+                android:id="@+id/clicklincensId"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/dimen_5dp"
+                android:text="lincens Document"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="5"
+            android:background="@drawable/data"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/registration_cardtextId"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:hint="Upload registration_card"
+                android:scaleType="fitXY" />
+
+            <Button
+                android:id="@+id/clickregistrationId"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/dimen_5dp"
+                android:text="Registration Document"
+                android:textColor="#fff"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="5"
+            android:background="@drawable/data"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/identity_cardtext"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:hint="Upload identity_card"
+                android:scaleType="fitXY" />
+
+            <Button
+                android:id="@+id/clickIdentyId"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/dimen_5dp"
+                android:text="Identity Card Document"
+                android:textColor="#fff"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2"
+
+            >
+
+            <Button
+                android:id="@+id/BtnAddAmbulanceId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/data"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="@dimen/dimen_10dp"
+                android:text="Add Ambulance"
+                android:textAllCaps="false"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/loading_layout"
+        android:visibility="gone" />
+</RelativeLayout>

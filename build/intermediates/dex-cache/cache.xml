@@ -1,0 +1,887 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\d4ad8bec4c4d8eaac6c68989a5a5db04a162e992\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="a25b0b5aec89681b95d32780ad7904c1e1e4c679">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b7fcc82fb3c980f8765dbb738ea5b93edd1314a2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\8937210788b3d7d92b20d5cebad7563fc4c8866d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="c72b1515efbd8ad652e2d63582c8234a979b1e53">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c2e615904f271354d9751b7d79096bf913195066\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\41762365a168d48954712d9e7fbc9fd4dcd54d3a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="acc33023966f868dfe3ecb77a3ce5676dc8de92d">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2f5c459410c29aa9a51105e5909a76d7f8c18b71\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\b8370d3a1b2e8ab3997fcf12cb68913751643877\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="ffd0ddf5e57b4d60c4a3fbcd38fa20349a0cebd1">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_22cfcdf202e9b902dc1c9d0fd9a8b164b797aaf1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\3f666015d062318d4a2fad15eb9aee56707868b4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="eea424e61a0c85b93a0e477565314a58136abaea">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d18b7354c6d3113494173b4fb4ad9f1c1c8dca28\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\3abca5fc883f2274d0870ff8317bb0a17162dcac\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="b77e50b3c31d0fc64148530f7077f79ec114b5b9">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_779718b764de15234e8e1290ebd63fb71da7ce57\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\fb40a5224e286bc2adea5f5d1c7aab809e424607\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="576570f46ff6ccc69a984af9e55ddd58d9549270">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d0370b58e4739fe72b585f86d0247425d939623a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\0d4989eb789c55d9362391d6b473ed7aa49af64a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="c6706cc7c8c3093560edd55d322218afe7798aa9">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_97e5d4bd19fab83bba41341b00d37ed100824bcb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\13f2a0be5f5587f4d21280d489029055f1e69c19\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d09e887f155e7d3b25a2409adcc82cfd641b1e6e">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_90f2b3a616d75134670e02535aceda37313b3fdb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\8cac766afe93c9fcf3c9a5392afd8f6224e5264b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="b1e0cd070d7cf659ece90e919bff76e7ddc32532">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e72cd51dc01132694f9f1420322ae466c6b03074\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\3b11eb2f53d71bce6fd8c9c36fd7dea8ef8d5d47\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="3423c4e8a6526948045ac0290c0b5ab753ff5ee6">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_61118fa6190e9ee042bbb3dd7590515595363634\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\3776ee720f661d48f32a260a6b22698c89764f22\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="fcae52a60bc07924d370b4d376116cd8f8581f54">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b6c72d059540c4a4c36fe74fcb05b80a3e962e50\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\e4081dd45ddf286e7b96d23b70217c4742b23a9a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="2c379c235d7983201bb83edfc3c60bb0dafb5805">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f5f1325b1efcb17ea7705d146b38e22b5c3f9278\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\54f96cd89bde8f49836cb0e707da12976378752a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="364364bf77b4a71afc5930fc3ae57b3f0eea637c">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f2284dfd7f8e3d4115cc92c80205ff8601d64e1c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\9f6c442fde5133a0eb09753e480aec7bdbb8a56e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c25e04a830558ad2f613f4be266943f5dfdaf2ba\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\2c59b409dd090517ddb141fb3f703c3f136db8e3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="e1625e48a836779b5fa141d22e5d05563aaccc9a">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_bd136adb17371ed574088b1fb33fb61e281ae7eb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\310a0b2d040424db98adb5dace665077f4e8f221\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="56d68d1174b9c1e368017a850b62b12429f39757">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_061fcf6b7d33df77ff02dfc6270d7cdee4539df9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\dd56b2b9f1067f746fd2c95f0607de9a2b1361fc\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9dd140826d555de9783b173220c831ee6940e52c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\b03e367292668a7da345e19cabf76c767b6aad5b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="f2cb88e7e28736d44e7e643deb80c9af1c3662c8">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2fc682ff43ae022ff0f7ffec821424a27a38597c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\454a3850c12f542f6b8b5820cd29ae21af262d97\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="3cef25b344d6893e5e2d9b1ae38d180955e9d3ef">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_80fd8698911ec7a0550c3f3eb61a8a9aeecc6a03\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\b05ee8ecdce358fc9aa3da074301e6fdeae1e873\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="43e9789bd3240271265ab30ce1be9f224843f5a8">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c193fea9be67a46afc6d14ea85b5a5ac63a2867a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\8fbd6d773def075e958531bfd9101070ebda7980\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="2c73e2a93e00abd240e495c1e62217e53904a3f3">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b2b4d7edbf56fa172371fc3ed07ddb64dc1e63ad\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\722473f9947bb44153412f22262e829955f8c05c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="3de1f8529a8ac62196be12e4174c5d79aa6e7171">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_929d823a3209bcc11a56cdd14716d7501878f38e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\905101b1ddc46afa67003327a66f35ac03a046d0\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="bfba7cf662f7e3e2cfeb92226c6b84c08e590225">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1c9cf56f81b7e23a86ee9b3d667340ac95f89cab\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\bf1526c7ab60ff1aa8f4390d7c561506504c1d9b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="fc3036436defd3070337b7191c50a136ebca7f8f">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5896c93a112c5c3407434cc9fa50a08c906e9212\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\ff510d952c7f0af7d76046d0b3b759002412f224\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="617296a10cb9a85d65527c62f13b0e6a44585173">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d59b1cf8cb202ddaf8af6c86092595b6fe028f9a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\8947c0d98f01fcae9a1673d41a0e5fd884d2d08b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d8942ee348aaa9341f08f7e2437063893fe27542">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7fff21c818211016d17e2dd1c12431d2d7a6e62d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\1c6f3776940f850625060159166d0936ab07d3d9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="b8aeb4fbb8b6ab80b79206b9425465572efe8793">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7f2dd0954356a608f8daa400c906e8db67749404\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\d5d9dd995120ea7a40575c63893d7801174f2042\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="e5b429c146094a612134910688d169ec08deeefb">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8fca2246e4fb245fab0e73f863ab4f3ec5f8448b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\1095313be6ff765b61c92408a916a74160a7f9b8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="c1b91bc7e480ab100d0397b16c93732e26fd10eb">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2b88f64ad04b4501851958ce2993d048fecca809\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\f6f154640852160b967a7e583a3c1e0bbf2257a1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="af13a350b71b437ebf4be335d02a8f785c39b111">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_687565b09907c50349d2ad85952ddd734d323c9f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.6.2\f1bc476cc167b18e66c297df599b2377131a8947\gson-2.6.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="f1bc476cc167b18e66c297df599b2377131a8947">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.6.2_76a2a0a97567472644cfd0f189fe6d68d0a2933b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\6e4b3638c737086176698cc247534a7e4bbb2d7d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="377c5f26ebf67f3fa6ef2f663a58cac7ce647dde">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0f2233cdfeb7c2034660d0d6ca177b4718178036\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\947a40448e1423b3e4c88e3a03ed3f780a3f0924\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="02b91f8efa91dcdf5c555ee24b7f006f02cd0f8b">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_926506351d7887aebefe8155eb22157134ad1e78\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\eecac2da6feb5bb7af31cfb2920778241025b225\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="63b03eaa1aa9b9431c7638841175f9842dcbf274">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_392a275b6f17d090bfaecf80742ca1a8cc43198d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\5dc4d76e483395f356cafc5456dfdc0c32c28ba8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="0bffdc0bd4f7ca0e27c5bfeef39569f8da00aa26">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c4c8d5c9a1d37b182423ff47071d760b452ffa66\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\1efaca32385ab0a42fdbfccb30fe6d0c42dea2c4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d9f58e509a3ff5b601c11ab5ec588c96f9eb82b2">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_80e136ab7b889c1055279bec27d0c27433e64763\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\4b1bb74801164fbe6bc683006e58efd6f9f8eafc\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="0354781c82c975b4a1035141ce3dad8cc4f2fb9a">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5c4388431282b5ea12532d80f0536842de713132\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\25.4.0\f6a2fc748ae3769633dea050563e1613e93c135e\support-annotations-25.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="f6a2fc748ae3769633dea050563e1613e93c135e">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.4.0_d1770c8acf01f42dd726ad5c012f33808c8cd934\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\731eb8d71a433d0a858ce594508d219860fa2ee0\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="7c24e2e9773fb498e390ce973db382c3ddcf748e">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4f711e5441c336a690cf33d4eb2918b6d39cd313\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\60f72dd1369e64f57aa86d5c49c027f7c1e7458c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="9be5e957849eb82ad9addf9bdb2896de8bf5654b">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e53ad74e117bb6247293fd58082a1051d4d43b86\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\a4de014ca4d3b8ec79546c61d313c2309f53cfe5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="3ac08c35419ab7cf9146969de471768dbe502f0f">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4a256af7eec5778645c98b908ae90f6b55c33edf\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.gradle\caches\modules-2\files-2.1\com.jakewharton\disklrucache\2.0.2\93b399470e72c0bc8cb52379943b63c9aa586cd8\disklrucache-2.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="93b399470e72c0bc8cb52379943b63c9aa586cd8">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\disklrucache-2.0.2_a5f7631694bf305fc92508442b36235203d8d148\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\f19d64a9997dd07977bb4b241cdd875b8b914d2e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="76ea35b41786082af23db898ca9e0fc07cc71fb9">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3b7adffb81188c25916070510fee63b20a1a36a4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\e8744774bc363fa3c377ffb31f5618c6ccd8c08e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="1094a7d00dc6488cf145d1ef49e4881640f84b1e">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_584af767cc4a9922554bb40cfb4a2c0030ed666d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\ea1ca77326fe8da457bf48f949c41178228893b1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="2430e711762a749feb00b3d64858ca4768251b9d">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_33a4b4305ce05534f404004c1a6307fa538edf1d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\picasso-2.5.2_a5bd3c766d5eb46885c532664d9585d25a0ae237\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\5bcdb7ba8b477b2845bac5671b9ee06a5e334fde\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="34c23b5894b4f24d566bfc33e0e25462c6436b78">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ade5cae8d6ecc46da4e947f71fbbfe22beeff51a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\822daa061cab6b5506ba8b0415f89f2d0b44c3b3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="416fb9ee2fd6e7af0bba04b01d90cb475b1e2074">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8ed359e7cddd8cceb5eec3cec07ceca271c7f0a9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\2c6e9cde5bda074254f231316e90135d590c4ad7\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="057fb316bed8467398333f30926c2d5506e275b2">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ae556df022767f063bb6d10e2856eeaff1b80826\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\702a4a88e25b0aefee7b05b9c31da4a229cd0970\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="1478a113f04bf0b679037b4f6bd88bd1837b96a3">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b62fc73765d59d5604a5f9009304125d3759cdf3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\f3b49905af195df490daabe558bc4b4bafbe85da\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="a64026daf4819a589aea776f5deb19b257a104d1">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1905e0ace7712f5c4a8b75fd45f02c4e6bc70caf\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\796e7970537cf78bf3c8e9d90adfdfc6ee2a1973\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="c38aaa6e8232077c6b21a4ac56d49ff2dbcf29ac">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_6793f33380285ceb9640ae2adff8da6cc707f73d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\b7a7f0408da9c3fdf15443f000a59a59b7752497\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d744c888540fa22ac9f099774f704d6e03671dc5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\ddf050c0cbb63c7b2d4cff690ef8cda766cadb71\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="c6aa915c08cfd82780c10d4b957018bf819a48e2">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2d2f38b5cb0fabe271601bdb88d139f0ecfa5b65\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\3ea3b60a829054074f6ce18884c9dc0511f4f248\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="e04f28ac2dd9bbe48ced6fc87fedf46c2586f5d6">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b34bd03ad6c695386c277ec901fcd0adac1b59fd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\7cca488dcbc415e896cf4739d8246906a635c393\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="b5b6af36bacf1d812cd3dc45f9dcab9ea471ed91">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3731d757756300eacbb5ed638e421d4b62414448\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\5fbf8f2141b9c5616a075fc3dfed4072f2df790d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="0c313c31821103b691da28431e67ddefbfffd030">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b3320d58e2330d3c82d3af598dc2821e8d7a3c0e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\a45fdc322377086622878054cc176147fc3f5f2c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="0e5a66a941515d873a34065fe44fbba6ef422a1b">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_15f2c89ba625d240e06f2a601ea995c6e58571b3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\53f22437c3ede3dcfb965ce9a8ffafee8e56e23d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="c8bf878c09bf0df6ae76eb6c2df38c6a186b38b7">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_60ebc89e2ba51615dbc39e8fddec0b9e4e7559be\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\b3f5a2d3f47b03f346511fb43a145e9c2af05212\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="8544f739799dd15db63927073a21312864ab0bfd">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4a2f31844aa0c59e602c2169b9398091607db1b5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\923c762836b7af0ad337f09b50a3a6a2ab594ad4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="3130814ee8f4b8a30cd6e3a8da9069e4565d63f9">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9308f2c199695fd5d070596c816796358e9b20fa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\glide-3.7.0_188b44cb98d907cd1f8e472564d8b2c1c04e80dc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\4dd88bf4d13b6526b348f177651b6d98a6759a76\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="f47f4d5bdfd7d7bf330945b8a7ccce4ab437a710">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_77ee72ae61cd4a450688910b19eac099d930ed60\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\f9d6927cf429c4fd44d3d267f6866c98fa850b76\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="dd282bdeaa904c59d77e57dedd7e0a241c9b679d">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5a627b286ca2e7175973e63e065e9d5bb4301493\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\0657646b4d367c96c86abb49a1089753341c626e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="5594a368622908d89c47d9a391aa2724fe046c35">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e8ab8dc5fbe7dc26cefd77e804a2b1a6ae7c3c96\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_ea9b62f20779cdd0d0be64249340a00926402346\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\2df23c7d446b73fc8762677909488dee9e895614\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="2c2f1b3f82c027e98f56bb0154de0acbcce42e6d">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_580be0df0667fc7e7b1a786a452f3e6650abd9db\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\86488d79cc332047732b1f50fbdd76c16e8fd78f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1df5392fd10bd8deb12b5b6a733d5757ba5fcef6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\ca162060d4f8d930f11fb59526da21b785229fd8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="4961be1437163ab598620a3c907c0f3432936f51">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8d344b62c035392f96e3e3b4ea588a3c28219ffc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\1cc2352d0467defb39327d8db132383bc868b728\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="70ffe00aaf049893f59d1dad57bd82992faa38ef">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_fdedfd7bcbcc178884a7dab8dc6a56897dbaa2cd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\b1bec56204f4ac1fbba7e9a1f36fa3527fc9b784\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="a7a0aa678c3bbadb67fb41df9e107f7ee9087902">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_fc942373a801b37f68ded82e5a07bcd7f136642e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\bb04dd5d87bd160995eaa16123480f374d7beca8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5c8d8212986cbffc753758e2f9089b60d4b2b776\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\library-2.4.0_f2dbf9ca113e98df73a2a5ff41832ec12fbac459\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\01df33caeb44d657b1325573dde2262f3e0e8243\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d29e451fd5bcc265989bf80afd4f149d95d72e7d">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_6bc49252dafe1ca1b80410ab6a4ed85e12bbe196\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\aef75b60272d2c70bdb43d8b9c67b68e60314ff1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="41f47bbcd281fdb1e42e220220ab3bfa1da591e0">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cd4f36c65d0adb7026ed7e3ae65b99dd792cd73f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\9ab15b6a682e42b8e2321336c0e2eac52c754c53\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="2b12b18c5518021cc71577c83d1290f8ddaa3c98">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5d1c45e50dc3388672307c646abc6db70a0a7356\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\48b2801165d8493ddacd9e8961efe3374882f87e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="4b685077cdb08cf7ae8b61afd1fe910e47d91b9a">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_202157f02b5a629592b68d4a2b3bfe5ea4387612\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\4ff498f3f45bad5e02bdfb595945bf7c9a1b6022\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a207e20734e104877c796b7b756c56309c076c42\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\0ea5f4a66d4c2d004f208cb359d9eecf42001f90\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="c175c3009577fad8b433703f5d7ac2dc21d3871f">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e7708cd3ce16f7e427f27ae949889f4b44fd76ae\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\250bfbd3b22154151566fe2dd94bf019c2a441c0\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="f5ff5e3811e8c9485fd27f9052ae4d4d23a22d9d">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7460549887f592a1ed30b4c78646c5c9fc967532\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\910f440b6d5cd3a13ca3e943567d4680b6cf5c9e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="f15e20dd7bcde7c688cfda44d0c8320a5c1c24b8">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_335d7c879d8e06f71982cc52827e17dcb792ae75\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\9eba894f5301fcf640a5c5ade7fa4a5568670dc7\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="ed87ccdcb70c17d71ba4e6e4ac16afa62d3c49fb">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_6201a19de38f5264e311650de6bd76ab08128bd3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\9969fd8d16be37a512c08b5a40dce2ac930dc1c6\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="e41a052c714bf67f743c22ed74153422ad773f88">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5b1119a41e7569dbb11cbcc23cb84d8ea945f331\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\9df69df27c4aa8ab670c0bf9bac519783d85747a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="db2fc4e47fec0d99db284a46dca4bd0e58ff9440">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9f3a33e72350919f1cd2b215374e600d4dac357e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\1d9ed5704a95c376848e0f62e7b446985b6b9f1c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="6b3430725095bd46b785e97bd34240826c27b4db">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a6e97f6cc700f46286a54994c1e84b8615a0e5ee\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\1f82b1270eabdccf4150ac6c977247a13fc92d3b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="721e3b06b9cb6946895dadc960dbc0bb74496d6f">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_15f5853c2b4e1dcaf8df26204f10d2d35a68cc04\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\6ab1cca0a373b2186b96496a30f68ff57b2a7a6f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="dae0d68af4c87df40eca67069861e53b7cefaaa0">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_138228d8af4508c7a2b07174e79389bbd68ec7ea\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\c6391c7cb1a4408a32e4f649c38e84db3c02f72e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="a751094b3149197fc97f509127ec65ed2329350f">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_90383a50ddd7d29eb4a36d2ab7163dc4e54145ce\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\c120db341f988ef33e838e823e92b033f7e4f5ab\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="1b12397bc9f342b29d9e9108978828f99a6da579">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4633ccbe6ba5617a050daa30e935acf9c2961607\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\90d79dd8648997085a23b3fbc2e8aedddc7427b1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="a2af9c72ccaa4c5c049b500ca6ea664a4ce1f7d4">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_dda0a19a67ff1a6b40b3fb54eaf341ad6689ec39\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\b5f382de1207259ddc6d2026a971331375c4dfba\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_14ac8ced9add2ded582418207586f35090aad066\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\58fdd80176ea1a329c7a5bdb865c10b29c83a277\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="e7f890dd2539b7f2582f450f0721e2dea6ae510c">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_6121f5de3d1fbe92ac5ba80e94d887624bac7af6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\e552b73a6bc9303d54dee39cde2d1e3476a3315a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="a5d52089bf4d31537232bb6bcb70cee817d8a374">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c3a04e8028730ddec24d0addacdb2e57372a3db7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.8.1\bc373fb6bc7bca3035041b924f158fd2b946ee8d\butterknife-annotations-8.8.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="bc373fb6bc7bca3035041b924f158fd2b946ee8d">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\butterknife-annotations-8.8.1_7a5f6ebc76f50270a6beb6ae67bd7fd45e6bd803\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\f035db332373c46787d6890c8b3258ee574053e3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="6a2bcb61342d09fe9acf55c9daf63961c8866cc0">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a33a8b97cb447f03abd2ed093233e03ff25b0eb1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\63be3c7223ff14f644bec3ee5c485742cce86e4b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="05e3d15c623cd98f0eb43c8249fb6151fae0786c">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a7010700d66c2a10c4b669286b6c9a03bf4c7048\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\d6f67e5f9c720f8cf09870e2bc74d5961c3fe050\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="c2deeac83ffa1304264bc755c2ddb84e7a7fa239">
+        <dex dex="F:\syzygy_android_project-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e266d2fe9d96d736fb5578bc5be6eb1a8a9dc4d7\classes.dex" />
+    </item>
+
+</items>

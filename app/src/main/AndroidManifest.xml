@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.dollop.syzygy">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+
+    <application
+        android:name=".AppController"
+        android:allowBackup="false"
+        android:icon="@drawable/final_launcher_icon"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup">
+        <activity
+            android:name=".activity.SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.WelcomeActivity" />
+        <activity
+            android:name=".activity.caregiver.CareGiverEnterMobileActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.caregiver.CareGiverEnterOTPActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.caregiver.CareGiverSignUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.caregiver.CareGiverEnterPasswordActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.client.ClientEnterMobileActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.client.ClientEnterOTPActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.client.ClientSignUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.client.ClientEnterPasswordActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.caregiver.CaregiverForgotPasswordActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.client.ClientMainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activity.client.HealthPointsToDoActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activity.InitialScreenActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WebViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.StatusActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.client.ChangePasswordActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activity.caregiver.CareGiverMainActivity"
+            android:label="@string/title_activity_care_giver_main"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activity.client.AddSeniorActivity"
+            android:label="@string/title_activity_care_giver_main"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activity.client.ClientUpdateProfile"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activity.client.ClientSeniorListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.client.ClientForgotPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.client.HireYourCaregiverActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.client.EmergencyContactClientActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.caregiver.CareGiverUpdateProfile"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <receiver android:name=".servics.SmsReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".notification.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".notification.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+
+        <service android:name=".servics.LocationService" />
+        <service
+            android:name=".activity.caregiver.CareGiverStopWatchActivity$TimerService"
+            android:exported="false" />
+        <service
+            android:name=".fragment.client.ClientMainFragment$ClientTimerService"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.caregiver.CareGiverStopWatchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.client.SummeryPageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.caregiver.CareGiverSummeryPageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.client.AmbulanceSummeryPage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.client.Client_RatingActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.client.HealthTipsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.client.HealthTipsSubActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.client.HealthTipsCoSubActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.client.HealthPointsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.client.SupportActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.PrivacyPolicyActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.TermAndConditionActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.OnlinePaymentWebViewActivity"></activity>
+        <activity android:name=".activity.client.CheckListActivity" />
+        <activity android:name=".activity.client.ClientReminderActivity"></activity>
+        <activity android:name=".activity.ChatActivity" />
+        <activity android:name=".activity.client.ReminderListActivity" />
+        <activity android:name=".activity.client.TipsNotificationActivity" />
+        <activity android:name=".activity.AboutUsActivity" />
+        <activity android:name=".activity.SupportDetailActivity" />
+        <activity android:name=".activity.caregiver.CareGiverRatingActivity" />
+    </application>
+
+</manifest>

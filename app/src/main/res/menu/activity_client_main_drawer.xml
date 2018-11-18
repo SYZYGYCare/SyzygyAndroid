@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/caregiver_nav_hire_your_caregiver"
+        android:icon="@drawable/ic_hire_your_caregiver_drawer_non_active"
+        android:title="Hire Your Caregiver" />
+    <item
+        android:id="@+id/caregiver_nav_your_hires"
+        android:icon="@drawable/ic_your_hire_drawer_non_active"
+        android:title="Your Hires" />
+    <item
+        android:id="@+id/caregiver_nav_payment"
+        android:icon="@drawable/ic_payment_drawer_non_active"
+        android:title="Payment" />
+    <item
+        android:id="@+id/caregiver_nav_refer_earn"
+        android:icon="@drawable/ic_refer_earn_drawer_non_active"
+        android:title="Refer &amp; Earn" />
+    <item
+        android:id="@+id/caregiver_nav_emergency_contact"
+        android:icon="@drawable/ic_emergency_drawer_non_active"
+        android:title="Emergency Contact" />
+    <item
+        android:id="@+id/add_senior"
+        android:icon="@drawable/ic_refer_earn_drawer_non_active"
+        android:title="Add Senior" />
+    <item
+        android:id="@+id/caregiver_nav_support"
+        android:icon="@drawable/ic_support_drawer_non_active"
+        android:title="Support" />
+    <item
+        android:id="@+id/caregiver_nav_about"
+        android:icon="@drawable/ic_about_drawer_non_active"
+        android:title="About" />
+    <item
+        android:id="@+id/caregiver_nav_setting"
+        android:icon="@drawable/ic_setting_drawer_non_active"
+        android:title="Setting" />
+    <item
+        android:id="@+id/caregiver_nav_logout"
+        android:icon="@drawable/ic_logout_drawer_non_active"
+        android:title="Logout" />
+
+</menu>
