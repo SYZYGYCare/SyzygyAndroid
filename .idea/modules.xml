@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/SyzygyAndroid.iml" filepath="$PROJECT_DIR$/SyzygyAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/syzygy_android_project-master.iml" filepath="$PROJECT_DIR$/syzygy_android_project-master.iml" />
     </modules>
   </component>
 </project>

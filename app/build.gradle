@@ -61,6 +61,7 @@ dependencies {
     compile 'com.payumoney.sdkui:plug-n-play:1.4.1'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.3.+'
 
 }
 apply plugin: 'com.google.gms.google-services'

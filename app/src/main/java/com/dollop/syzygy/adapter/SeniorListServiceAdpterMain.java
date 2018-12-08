@@ -38,14 +38,14 @@ public class SeniorListServiceAdpterMain extends RecyclerView.Adapter<SeniorList
 
         return new MyViewHolder(itemView);
     }
-
+    //Bug Resolved By Yash Verma
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final AddSeniorModel cardListObject = employeeList.get(position);
-        holder.SeniorNameTv.setText("Name:" + cardListObject.getSeniorName());
-        holder.ageNameTv.setText("Age:" + cardListObject.getSeniorAge());
-        holder.GenderNameTv.setText("Gender:" + cardListObject.getSeniorGender());
-        holder.DescriptionNameTv.setText("Description:" + cardListObject.getSeniorDecription());
-        holder.tvRelationShipId.setText("RelationShip:" + cardListObject.getRelationShip());
+        holder.SeniorNameTv.setText("Name : " + cardListObject.getSeniorName());
+        holder.ageNameTv.setText("Age : " + cardListObject.getSeniorAge());
+        holder.GenderNameTv.setText("Gender : " + cardListObject.getSeniorGender());
+        holder.DescriptionNameTv.setText("Description : " + cardListObject.getSeniorDecription());
+        holder.tvRelationShipId.setText("Relationship : " + cardListObject.getRelationShip());
         holder.linearLayoutId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

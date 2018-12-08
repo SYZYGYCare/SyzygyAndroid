@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:hint="Hour Actual"
+            android:hint="Hour/Km"
             android:inputType="number"
 
             android:imeOptions="actionDone"
@@ -64,7 +64,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="5dp">
+
+        android:layout_marginTop="15dp">
 
         <EditText
             android:id="@+id/etReasonId"
@@ -73,6 +74,7 @@
             android:layout_marginLeft="20dp"
             android:hint="Reason Description"
             android:imeOptions="actionDone"
+            android:paddingTop="10dp"
             android:background="@drawable/btn_red_border"
             android:padding="@dimen/dimen_8dp"
             android:gravity="start"

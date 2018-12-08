@@ -184,4 +184,10 @@ public class CareGiverRatingActivity extends BaseActivity {
      /*   Log.e("response", "getParams" + getParam());*/
         return postParams;
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }
+

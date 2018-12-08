@@ -1,5 +1,6 @@
 package com.dollop.syzygy.activity.client;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -22,6 +23,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
@@ -55,6 +57,8 @@ import butterknife.ButterKnife;
 
 import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 /**
  * Created by sohel on 9/27/2017.
@@ -84,6 +88,8 @@ public class ClientUpdateProfile extends BaseActivity {
     EditText clientUpdateProfileAddress;
     @BindView(R.id.clientUpdateProfileImage)
     ImageView clientUpdateProfileImage;
+
+    private Uri mCropImageUri;
     Uri mImageCaptureUri;
     Bitmap productImageBitmap;
     private String gender;
@@ -122,7 +128,9 @@ public class ClientUpdateProfile extends BaseActivity {
         clientUpdateProfileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectImage();
+                CropImage.startPickImageActivity(ClientUpdateProfile.this);
+               // selectImage();
+
             }
         });
 
@@ -383,21 +391,71 @@ public class ClientUpdateProfile extends BaseActivity {
         return result2 == PackageManager.PERMISSION_GRANTED;
     }
 
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//
+//
+//        if (requestCode == CAMERA_PIC_REQUEST && resultCode == Activity.RESULT_OK && null != data) {
+//            Uri cameraURI = data.getData();
+//            productImageBitmap = (Bitmap) data.getExtras().get("data");
+//            clientUpdateProfileImage.setImageBitmap(productImageBitmap);
+//            clientUpdateProfileImage.setVisibility(View.VISIBLE);
+//
+//        } else if (requestCode == SELECT_FROM_GALLERY && resultCode == Activity.RESULT_OK && null != data) {
+//            Uri galleryURI = data.getData();
+//            clientUpdateProfileImage.setImageURI(galleryURI);
+//        }
+//    }
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-
-        if (requestCode == CAMERA_PIC_REQUEST && resultCode == Activity.RESULT_OK && null != data) {
-            Uri cameraURI = data.getData();
-            productImageBitmap = (Bitmap) data.getExtras().get("data");
-            clientUpdateProfileImage.setImageBitmap(productImageBitmap);
-            clientUpdateProfileImage.setVisibility(View.VISIBLE);
-
-        } else if (requestCode == SELECT_FROM_GALLERY && resultCode == Activity.RESULT_OK && null != data) {
-            Uri galleryURI = data.getData();
-            clientUpdateProfileImage.setImageURI(galleryURI);
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (mCropImageUri != null && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            // required permissions granted, start crop image activity
+            startCropImageActivity(mCropImageUri);
+        } else {
+            Toast.makeText(this, "Cancelling, required permissions are not granted", Toast.LENGTH_LONG).show();
         }
     }
 
+    private void startCropImageActivity(Uri imageUri) {
+        CropImage.activity(imageUri)
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .setMultiTouchEnabled(true)
+                .start(this);
+    }
+
+
+    @Override
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        // handle result of pick image chooser
+        if (requestCode == CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            Uri imageUri = CropImage.getPickImageResultUri(this, data);
+
+            // For API >= 23 we need to check specifically that we have permissions to read external storage.
+            if (CropImage.isReadExternalStoragePermissionsRequired(this, imageUri)) {
+                // request permissions and handle the result in onRequestPermissionsResult()
+                mCropImageUri = imageUri;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+                }
+            } else {
+                // no permissions required or already grunted, can start crop image activity
+                startCropImageActivity(imageUri);
+            }
+        }
+
+        // handle result of CropImageActivity
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK)
+            {
+              clientUpdateProfileImage.setImageURI(result.getUri());
+
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Toast.makeText(this, "Cropping failed: " + result.getError(), Toast.LENGTH_LONG).show();
+            }
+        }
+    }
 
 }

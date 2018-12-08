@@ -1,5 +1,6 @@
 package com.dollop.syzygy.activity.caregiver;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -20,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
@@ -31,6 +33,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.dollop.syzygy.R;
 import com.dollop.syzygy.activity.BaseActivity;
+import com.dollop.syzygy.activity.client.ClientUpdateProfile;
 import com.dollop.syzygy.database.datahelper.UserDataHelper;
 import com.dollop.syzygy.database.model.UserModel;
 import com.dollop.syzygy.sohel.Const;
@@ -57,6 +60,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 /**
  * Created by sohel on 9/27/2017.
@@ -87,8 +92,10 @@ public class CareGiverUpdateProfile extends BaseActivity {
     EditText caregiveraddarnumber;
     Bitmap productImageBitmap;
     Uri mImageCaptureUri;
+    private Uri mCropImageUri;
     int screenWidth = 500;
     private String gender;
+
 
     @Override
     protected int getContentResId() {
@@ -119,7 +126,8 @@ public class CareGiverUpdateProfile extends BaseActivity {
         caregiverUpdateProfileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectImage();
+                CropImage.startPickImageActivity(CareGiverUpdateProfile.this);
+               // selectImage();
             }
         });
         getClientProfile();
@@ -208,21 +216,21 @@ public class CareGiverUpdateProfile extends BaseActivity {
         return result2 == PackageManager.PERMISSION_GRANTED;
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-
-        if (requestCode == CAMERA_PIC_REQUEST && resultCode == Activity.RESULT_OK && null != data) {
-            Uri cameraURI = data.getData();
-            productImageBitmap = (Bitmap) data.getExtras().get("data");
-            caregiverUpdateProfileImage.setImageBitmap(productImageBitmap);
-            caregiverUpdateProfileImage.setVisibility(View.VISIBLE);
-
-        } else if (requestCode == SELECT_FROM_GALLERY && resultCode == Activity.RESULT_OK && null != data) {
-            Uri galleryURI = data.getData();
-            caregiverUpdateProfileImage.setImageURI(galleryURI);
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//
+//
+//        if (requestCode == CAMERA_PIC_REQUEST && resultCode == Activity.RESULT_OK && null != data) {
+//            Uri cameraURI = data.getData();
+//            productImageBitmap = (Bitmap) data.getExtras().get("data");
+//            caregiverUpdateProfileImage.setImageBitmap(productImageBitmap);
+//            caregiverUpdateProfileImage.setVisibility(View.VISIBLE);
+//
+//        } else if (requestCode == SELECT_FROM_GALLERY && resultCode == Activity.RESULT_OK && null != data) {
+//            Uri galleryURI = data.getData();
+//            caregiverUpdateProfileImage.setImageURI(galleryURI);
+//        }
+//    }
 
     private void getClientProfile() {
         S.E("prams " + getParams());
@@ -444,4 +452,56 @@ public class CareGiverUpdateProfile extends BaseActivity {
         multipartRequest.setRetryPolicy(policy);
 
     }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (mCropImageUri != null && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            // required permissions granted, start crop image activity
+            startCropImageActivity(mCropImageUri);
+        } else {
+            Toast.makeText(this, "Cancelling, required permissions are not granted", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void startCropImageActivity(Uri imageUri) {
+        CropImage.activity(imageUri)
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .setMultiTouchEnabled(true)
+                .start(this);
+    }
+
+
+    @Override
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        // handle result of pick image chooser
+        if (requestCode == CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            Uri imageUri = CropImage.getPickImageResultUri(this, data);
+
+            // For API >= 23 we need to check specifically that we have permissions to read external storage.
+            if (CropImage.isReadExternalStoragePermissionsRequired(this, imageUri)) {
+                // request permissions and handle the result in onRequestPermissionsResult()
+                mCropImageUri = imageUri;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+                }
+            } else {
+                // no permissions required or already grunted, can start crop image activity
+                startCropImageActivity(imageUri);
+            }
+        }
+
+        // handle result of CropImageActivity
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                caregiverUpdateProfileImage.setImageURI(result.getUri());
+                Toast.makeText(this, "Cropping successful, Sample: " + result.getSampleSize(), Toast.LENGTH_LONG).show();
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Toast.makeText(this, "Cropping failed: " + result.getError(), Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
 }
+

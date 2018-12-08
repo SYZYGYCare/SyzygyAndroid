@@ -5,6 +5,7 @@
 
     <include layout="@layout/tool_bar" />
 
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -128,9 +129,10 @@
                     android:id="@+id/clientUpdateProfileAadharNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:digits="0123456789"
+                    android:inputType="numberDecimal"
                     android:hint="Aadhar Number"
-                    android:maxLength="12"
+                    android:maxLength="16"
                     android:singleLine="true"
                     android:imeOptions="actionNext"/>
             </android.support.design.widget.TextInputLayout>

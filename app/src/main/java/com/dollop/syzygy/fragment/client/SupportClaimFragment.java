@@ -63,13 +63,20 @@ public class SupportClaimFragment extends Fragment {
         etHourActualId=(EditText)view.findViewById(R.id.etHourActualId);
         etReasonId=(EditText)view.findViewById(R.id.etReasonId);
         etServiceId=(EditText)view.findViewById(R.id.etServiceId);
+        final String Hire_CareGiver_id = SavedData.getHireCareGiverId();
+       // Toast.makeText(getContext(),Hire_CareGiver_id,Toast.LENGTH_LONG).show();
         btnSubmitId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(UserAccount.isEmpty(etServiceId,etHourReportedId,etHourActualId,etReasonId)){
+                if(UserAccount.isEmpty(etServiceId,etHourReportedId,etHourActualId,etReasonId) && Hire_CareGiver_id.equalsIgnoreCase(etServiceId.getText().toString().trim())){
                     saveClaim();
 
-                }else{
+                }
+                else if(!Hire_CareGiver_id.equalsIgnoreCase(etServiceId.getText().toString().trim())){
+                    Toast.makeText(getContext(),"Hire Id doesn't match",Toast.LENGTH_SHORT).show();
+
+                }
+                else{
                     UserAccount.EditTextPointer.setError("Field can't be empty");
                 }
             }
@@ -118,10 +125,13 @@ public class SupportClaimFragment extends Fragment {
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.dismiss();
+                getActivity().onBackPressed();
             }
         });
 
         builder.show();
+
+
     }
 
     private Map<String, String> getParams() {

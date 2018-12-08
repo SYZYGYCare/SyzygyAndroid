@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:visibility="gone"
             android:text="" />
 
         <TextView
@@ -34,6 +35,7 @@
             android:layout_marginRight="@dimen/dimen_5dp"
             android:layout_weight="1"
             android:gravity="right"
+            android:visibility="gone"
             android:text="Support"
             android:textColor="#1c56ca"
             android:textSize="@dimen/text_size_normal" />
@@ -321,7 +323,7 @@
                         android:layout_marginRight="@dimen/dimen_20dp"
                         android:background="@drawable/clientpop"
                         android:gravity="start"
-                        android:hint="Describtion"
+                        android:hint="Description"
                         android:padding="@dimen/dimen_10dp" />
 
                     <RelativeLayout

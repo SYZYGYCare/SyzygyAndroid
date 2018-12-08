@@ -2,6 +2,7 @@ package com.dollop.syzygy.activity.client;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -96,8 +97,12 @@ public class Client_RatingActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if (ratingBar1.getRating() == 0.0) {
-                    S.T(Client_RatingActivity.this, "Please Give a Rating");
-                } else {
+                    S.T(Client_RatingActivity.this, "Please Give a Rating");}
+
+                    else if(describtion.getText().toString().trim().isEmpty()){
+                    S.T(Client_RatingActivity.this, "Please write description");
+                    }
+                 else {
                     SavedData.saveRatingStatus(false);
                     SavedData.saveMessageForsummery("");
                     AddFinalRatting();
@@ -147,12 +152,40 @@ public class Client_RatingActivity extends BaseActivity {
     }
 
     private Map<String, String> getParam() {
+
         HashMap<String, String> postParams = new HashMap<>();
-        postParams.put("token", SavedData.gettocken_id());
-        postParams.put("caregiver_id", caregiver_id);
-        postParams.put("rating", String.valueOf(ratingBar1.getRating()));
-        postParams.put("feedback", describtion.getText().toString());
+        try
+        {
+            String description = "";
+            if( describtion.getText().toString()!= null)
+            {
+                description = describtion.getText().toString();
+                description = description.trim();
+            }
+
+
+            postParams.put("token", SavedData.gettocken_id());
+            postParams.put("caregiver_id", caregiver_id);
+            postParams.put("rating", String.valueOf(ratingBar1.getRating()));
+            postParams.put("feedback",description);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
         return postParams;
     }
+    @Override
+    public void onBackPressed() {
+
+    }
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            //preventing default implementation previous to android.os.Build.VERSION_CODES.ECLAIR
+//            return true;
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
 }
