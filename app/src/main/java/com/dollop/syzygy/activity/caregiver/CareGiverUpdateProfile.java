@@ -60,6 +60,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -127,7 +128,7 @@ public class CareGiverUpdateProfile extends BaseActivity {
             @Override
             public void onClick(View view) {
                 CropImage.startPickImageActivity(CareGiverUpdateProfile.this);
-               // selectImage();
+                // selectImage();
             }
         });
         getClientProfile();
@@ -144,9 +145,32 @@ public class CareGiverUpdateProfile extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_save:
-                if (UserAccount.isEmpty(caregiverUpdateProfileFullName, caregiverUpdateProfileemail, caregiveraddress, caregiveraddarnumber)) {
+                try
+                {
+                    if (UserAccount.isEmpty(caregiverUpdateProfileFullName, caregiverUpdateProfileemail))
+                    {
+                        String add = caregiveraddress.getText().toString().trim();
+                        String adh_num = caregiveraddarnumber.getText().toString().trim();
 
-                    updateProfile();
+                        if (add == null || add.equalsIgnoreCase(""))
+                        {
+                            Toast.makeText(CareGiverUpdateProfile.this,"Please enter address",Toast.LENGTH_LONG).show();
+                        }else if (adh_num == null || adh_num.equalsIgnoreCase(""))
+                        {
+                            Toast.makeText(CareGiverUpdateProfile.this,"Please enter Adhar number",Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            updateProfile();
+
+                        }
+
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
                 }
                 break;
             case android.R.id.home:
@@ -452,6 +476,7 @@ public class CareGiverUpdateProfile extends BaseActivity {
         multipartRequest.setRetryPolicy(policy);
 
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         if (mCropImageUri != null && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -472,7 +497,8 @@ public class CareGiverUpdateProfile extends BaseActivity {
 
     @Override
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
 
         // handle result of pick image chooser
         if (requestCode == CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {

@@ -65,6 +65,7 @@ public class HireYourCaregiverAdapter extends RecyclerView.Adapter<HireYourCareg
 
         holder.total_amount.setText(hireYourCaregiverModel.getTotalTime());
         holder.tvCareGiverId.setText("Hired Service Id : "+hireYourCaregiverModel.getHiredCaregiverId());
+        holder.tvTransactionId.setText("Transaction Id : "+hireYourCaregiverModel.getTransaction_id());
 
 
         if (hireYourCaregiverModel.getType().equals("caregiver")) {
@@ -113,6 +114,7 @@ public class HireYourCaregiverAdapter extends RecyclerView.Adapter<HireYourCareg
         private final TextView id_source;
         private final TextView id_desti;
         private final TextView total_km;
+        private final TextView tvTransactionId;
         private final TextView tvCareGiverId;
         public ImageView hyourimage;
         TextView txtname;
@@ -132,9 +134,8 @@ public class HireYourCaregiverAdapter extends RecyclerView.Adapter<HireYourCareg
             id_desti = (TextView) itemView.findViewById(R.id.id_desti);
             total_km = (TextView) itemView.findViewById(R.id.total_km);
             tvCareGiverId = (TextView) itemView.findViewById(R.id.tvCareGiverId);
-
+            tvTransactionId = (TextView) itemView.findViewById(R.id.tvTransactionId);
             ratingBar = (RatingBar) itemView.findViewById(R.id.ratingBar);
-
 
         }
     }

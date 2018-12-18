@@ -149,6 +149,7 @@ public class WelcomeActivity extends BaseActivity {
 
                                         Intent intent = new Intent(WelcomeActivity.this, ClientSignUpActivity.class);
                                         intent.putExtra("contact_no", client_phone);
+                                        startActivity(intent);
 
 
 
@@ -160,7 +161,7 @@ public class WelcomeActivity extends BaseActivity {
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         dialog.cancel();
-
+                                        S.I_clear(WelcomeActivity.this, ClientEnterMobileActivity.class, null);
 
                                     }
                                 });

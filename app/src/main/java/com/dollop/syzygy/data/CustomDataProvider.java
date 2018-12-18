@@ -29,7 +29,7 @@ public class CustomDataProvider {
         * GROUPITEM = DENGAN CHILD
         * */
         rootMenu.add(new Item(R.drawable.ic_house_building_outline, "Home"));
-        rootMenu.add(new GroupItem(R.drawable.ic_register_for_non_active, "Regiser For"));
+        rootMenu.add(new GroupItem(R.drawable.ic_register_for_non_active, "Register For"));
         rootMenu.add(new Item(R.drawable.ic_payment_drawer_non_active, "Your Hires"));
 //        rootMenu.add(new Item(R.drawable.ic_emergency_drawer_non_active, "Emergency Contact"));
         rootMenu.add(new GroupItem(R.drawable.ic_setting_drawer_non_active, "Setting"));
@@ -64,7 +64,7 @@ public class CustomDataProvider {
         switch (level) {
             case LEVEL_1:
                 switch (menuItem.toString()) {
-                    case "Regiser For":
+                    case "Register For":
                         result = getListKategori();
                         break;
                     case "Setting":

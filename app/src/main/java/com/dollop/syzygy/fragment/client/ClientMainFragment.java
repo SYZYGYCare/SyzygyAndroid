@@ -64,6 +64,7 @@ import com.dollop.syzygy.Model.UserCurrentStatus;
 import com.dollop.syzygy.Model.UserCurrentStatusResponse;
 import com.dollop.syzygy.R;
 import com.dollop.syzygy.activity.ChatActivity;
+import com.dollop.syzygy.activity.SplashActivity;
 import com.dollop.syzygy.activity.client.AmbulanceSummeryPage;
 import com.dollop.syzygy.activity.client.ClientMainActivity;
 import com.dollop.syzygy.activity.client.ClientSeniorListActivity;
@@ -301,6 +302,7 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
     boolean TimerRunning = false;
     private String timeInMinut;
     private long timeInM = 0;
+    private static long save_time = 0;
     private String serviceId = "";
     private String specializationId = "";
     private LatLng dest;
@@ -339,11 +341,41 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
 //            careGiverStopWatchText.setText(timerService.elapsedTime() + " seconds");
 //            timeInM += timerService.elapsedTime();
             if (TimerRunning) {
-                long currentTym = timeInM + timerService.elapsedTime();
-                long sec = currentTym % 60;
-                long min = (currentTym / 60) % 60;
-                long hours = (currentTym / 60) / 60;
-                careGiverStopWatchText.setText(hours + ":" + min + ":" + sec);
+                save_time = timeInM + timerService.elapsedTime();
+                if (save_time == 0)
+                {
+                    try {
+                        String time = SavedData.getTimerTime();
+                        if (time!= null && !time.equalsIgnoreCase(""))
+                            timeInM = Long.parseLong(SavedData.getTimerTime());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                long sec = save_time % 60;
+                long min = (save_time / 60) % 60;
+                long hours = (save_time / 60) / 60;
+
+                String time = "";
+
+                if (hours < 10)
+                    time = "0" + hours;
+                else
+                    time = "" + hours;
+
+                if (min < 10)
+                    time = time + ":0" + min;
+                else
+                    time = time + ":" + min;
+
+
+                if (sec < 10)
+                    time = time + ":0" + sec;
+                else
+                    time = time + ":" + sec;
+
+                careGiverStopWatchText.setText(time);
+
             }
 
 
@@ -357,7 +389,7 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
         this.gps = new GPSTrackerNew(getActivity());
         isFirstTime = true;
         isCareGiverAvaliable = false;
-        autocompleteFragment = (SupportPlaceAutocompleteFragment)getChildFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+        autocompleteFragment = (SupportPlaceAutocompleteFragment) getChildFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
 
 
 
@@ -415,7 +447,7 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
             }
         });
 
-        getActivity().startService(new Intent(getActivity(), LocationService.class));
+
 
 
         if (!hasPermissions(getActivity(), PERMISSIONS)) {
@@ -804,7 +836,29 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
                             long sec = timeInM % 60;
                             long min = (timeInM / 60) % 60;
                             long hours = (timeInM / 60) / 60;
-                            careGiverStopWatchText.setText(hours + ":" + min + ":" + sec);
+
+
+                            String time = "";
+
+                            if (hours < 10)
+                                time = "0" + hours;
+                            else
+                                time = "" + hours;
+
+                            if (min < 10)
+                                time = time + ":0" + min;
+                            else
+                                time = time + ":" + min;
+
+
+                            if (sec < 10)
+                                time = time + ":0" + sec;
+                            else
+                                time = time + ":" + sec;
+
+                            careGiverStopWatchText.setText(time);
+
+
                             timerService.stopTimer();
                             TimerRunning = false;
 
@@ -1003,12 +1057,10 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
         mMap.animateCamera(cu);
     }
 
-    public void updateLocalMap()
-    {
+    public void updateLocalMap() {
         List<Marker> markers = new ArrayList<>();
 
-        if (SavedData.getHiredUserType().equals(Constants.HIRE_AMBULANCE))
-        {
+        if (SavedData.getHiredUserType().equals(Constants.HIRE_AMBULANCE)) {
             carMarker = mMap.addMarker(new MarkerOptions()
                     .position(new LatLng(pickupLat, pickupLong))
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_ambulance_home)));
@@ -1180,7 +1232,8 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
      * Method to select time from time picker
      ***********************/
     public void timeDialog() {
-        TimePickerDialog tpDialog = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
+        TimePickerDialog tpDialog = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener()
+        {
             @Override
             public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
                 mSelectedTime = String.valueOf(hourOfDay + ":" + minute + ":00");
@@ -1192,7 +1245,7 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
 
     }
 
-Handler handler = new Handler();
+    Handler handler = new Handler();
 
     @Override
     public void onResume() {
@@ -1207,26 +1260,20 @@ Handler handler = new Handler();
             e.printStackTrace();
         }
 
-        try
-        {
+        try {
 
-            handler.postDelayed(new Runnable()
-            {
+            handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    if(is_from_mapready)
-                    {
+                    if (is_from_mapready) {
                         is_from_mapready = false;
-                    }
-                    else {
+                    } else {
                         GetCurrentStatus();
                     }
 
                 }
-            },2000);
-        }
-        catch (Exception e)
-        {
+            }, 2000);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         //notificationHandelar();
@@ -1432,8 +1479,7 @@ Handler handler = new Handler();
             getlatitude = String.valueOf(mLastLocation.getLatitude());
             getlongitude = String.valueOf(mLastLocation.getLongitude());
 
-            if (SavedData.getLatitude().equals(""))
-            {
+            if (SavedData.getLatitude().equals("")) {
                 UCA = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
                 getlatitude = String.valueOf(mLastLocation.getLatitude());
                 getlongitude = String.valueOf(mLastLocation.getLongitude());
@@ -1586,9 +1632,9 @@ Handler handler = new Handler();
                             markerOptions4.position(ll);
                             marker = mMap.addMarker(markerOptions4);
                             //mMap.moveCamera(CameraUpdateFactory.newLatLng(ll));
-                          //  mMap.animateCamera(CameraUpdateFactory.zoomTo(17));
+                            //  mMap.animateCamera(CameraUpdateFactory.zoomTo(17));
                         }
-                       // mMap.animateCamera(CameraUpdateFactory.zoomTo(17));
+                        // mMap.animateCamera(CameraUpdateFactory.zoomTo(17));
                     } else {
                         isCareGiverAvaliable = false;
                         noInternetDialog(mainobject.getString("message"));
@@ -1635,17 +1681,14 @@ Handler handler = new Handler();
 
 
     @Override
-    public void onLocationChanged(Location location)
-    {
+    public void onLocationChanged(Location location) {
 
-        if(location!= null)
-        {
-            if(SavedData.getLatitude().equalsIgnoreCase(""))
-            {
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(),location.getLongitude()), 17));
+        if (location != null) {
+            if (SavedData.getLatitude().equalsIgnoreCase("")) {
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 17));
             }
-            SavedData.saveLatitude(""+location.getLatitude());
-            SavedData.saveLONGITUDE(""+location.getLongitude());
+            SavedData.saveLatitude("" + location.getLatitude());
+            SavedData.saveLONGITUDE("" + location.getLongitude());
         }
         /*if (userCurrentStatus != null)
         {
@@ -1689,12 +1732,11 @@ Handler handler = new Handler();
                     JSONObject mainobject = new JSONObject(response);
                     String status = mainobject.getString("status");
                     /*   int data = mainobject.getInt("1");*/
-                    if (status.equals("success"))
-                    {
+                    if (status.equals("success")) {
                         JSONObject content1 = mainobject.getJSONObject("data");
-                        if(content1.has("hire_caregiver_id"))
-                        hire_id_for_cancel = content1.getString("hire_caregiver_id");
-                     //   Toast.makeText(getActivity(), "Notification Sent", Toast.LENGTH_SHORT).show();
+                        if (content1.has("hire_caregiver_id"))
+                            hire_id_for_cancel = content1.getString("hire_caregiver_id");
+                        //   Toast.makeText(getActivity(), "Notification Sent", Toast.LENGTH_SHORT).show();
                         linearConfirmHiringDrawer.setVisibility(View.GONE);
                         LinearHireestimate.setVisibility(View.GONE);
                         LinearHireConfirm.setVisibility(View.GONE);
@@ -1718,12 +1760,10 @@ Handler handler = new Handler();
         runnableContactRefershApi = new Runnable() {
             public void run() {
                 try {
-                    if (null != handlerContactRefershApi)
-                    {
+                    if (null != handlerContactRefershApi) {
 
 
                         handlerContactRefershApi.removeCallbacks(runnableContactRefershApi);
-
 
 
                     }
@@ -1733,17 +1773,14 @@ Handler handler = new Handler();
                     handlerContactRefershApi.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            try
-                            {
+                            try {
                                 getActivity().onBackPressed();
-                            }
-                            catch (Exception e)
-                            {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
 
                         }
-                    },1000);
+                    }, 1000);
 
 
                 } catch (Exception e) {
@@ -1912,8 +1949,7 @@ Handler handler = new Handler();
                     careGiverSpecializationslist.clear();
                     S.E("Ambulance  ka response" + response);
                     JSONObject object1 = new JSONObject(response);
-                    if (object1.getString("status").equals("200"))
-                    {
+                    if (object1.getString("status").equals("200")) {
                         JSONArray content1 = object1.getJSONArray("data");
                         for (int j = 0; j < content1.length(); j++) {
                             JSONObject jsonObject = content1.getJSONObject(j);
@@ -2347,7 +2383,7 @@ Handler handler = new Handler();
             codPopUpBtn.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     dialog.dismiss();
-                 //   getCaregiverAcrordingLocation();
+                    //   getCaregiverAcrordingLocation();
                 }
             });
             dialog.show();
@@ -2375,6 +2411,7 @@ Handler handler = new Handler();
             getActivity().unbindService(mConnection);
             serviceBound = false;
         }
+        SavedData.saveTimerTime("" + save_time);
     }
 
     /**
@@ -2431,6 +2468,8 @@ Handler handler = new Handler();
         public void onDestroy() {
             super.onDestroy();
             S.E("Destroying service");
+
+
         }
 
         /**
@@ -2578,6 +2617,8 @@ Handler handler = new Handler();
                     S.E("logprintStackTrace" + e);
                 }
 
+
+
                 handler_loc.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -2605,8 +2646,7 @@ Handler handler = new Handler();
     }
 
 
-    private Map<String, String> getUpdateLocationParam()
-    {
+    private Map<String, String> getUpdateLocationParam() {
         HashMap<String, String> prams = new HashMap<>();
         try {
             if (CareGiver_id == null || CareGiver_id.equalsIgnoreCase(""))
@@ -2773,7 +2813,7 @@ Handler handler = new Handler();
 
 
     private void GetCurrentStatus() {
-      //  S.E("accept prams ----    " + getUpdateLocationParam());
+        //  S.E("accept prams ----    " + getUpdateLocationParam());
 
         Map<String, String> prams = getParamForCurrentStatus();
         new JSONParser(getActivity()).parseVollyStringRequestWithoutLoad(Const.URL.GET_BOOKING_STATUS_USER, 1, prams, new Helper() {
@@ -2797,7 +2837,7 @@ Handler handler = new Handler();
                             SavedData.saveHireCareGiverId(Hire_CareGiver_id);
 
                             if (CareGiver_id == null || CareGiver_id.equalsIgnoreCase(""))
-                               SavedData.saveCareGiverId(userCurrentStatus.getCaregiverId());
+                                SavedData.saveCareGiverId(userCurrentStatus.getCaregiverId());
 
                             if (status != null && status.equalsIgnoreCase("accepted"))
                             {
@@ -2843,8 +2883,7 @@ Handler handler = new Handler();
                                 LinearHiringconfirm.setVisibility(View.VISIBLE);
                                 linearProgressIn.setVisibility(View.GONE);
                                 linearLayoutAmbulancenCareId.setVisibility(View.GONE);
-                            } else if (status != null && status.equalsIgnoreCase("start"))
-                            {
+                            } else if (status != null && status.equalsIgnoreCase("start")) {
 
                                 String typeOfCaregiver = userCurrentStatus.getType();
                                 if (typeOfCaregiver.equalsIgnoreCase("1")) {

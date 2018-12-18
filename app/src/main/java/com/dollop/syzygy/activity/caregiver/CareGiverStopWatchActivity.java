@@ -110,7 +110,26 @@ public class CareGiverStopWatchActivity extends BaseActivity {
             long sec = currentTym % 60;
             long min = (currentTym / 60) % 60;
             long hours = (currentTym / 60) / 60;
-            careGiverStopWatchText.setText(hours + ":" + min + ":" + sec);
+
+            String time = "";
+
+            if(hours < 10)
+                time = "0"+hours;
+            else
+                time = ""+hours;
+
+            if(min < 10)
+                time = time+":0"+min;
+            else
+                time = time+":"+min;
+
+
+            if(sec < 10)
+                time = time+":0"+sec;
+            else
+                time = time+":"+sec;
+
+            careGiverStopWatchText.setText(time);
         }
 
 
@@ -405,12 +424,53 @@ public class CareGiverStopWatchActivity extends BaseActivity {
                 long sec = currentTym % 60;
                 long min = (currentTym / 60) % 60;
                 long hours = (currentTym / 60) / 60;
-                careGiverStopWatchText.setText(hours + ":" + min + ":" + sec);
+
+                String time = "";
+
+                if(hours < 10)
+                    time = "0"+hours;
+                else
+                    time = ""+hours;
+
+                if(min < 10)
+                    time = time+":0"+min;
+                else
+                    time = time+":"+min;
+
+
+                if(sec < 10)
+                    time = time+":0"+sec;
+                else
+                    time = time+":"+sec;
+
+
+
+                careGiverStopWatchText.setText(time);
             } else {
                 long sec = timerService.elapsedTime() % 60;
                 long min = (timerService.elapsedTime() / 60) % 60;
                 long hours = (timerService.elapsedTime() / 60) / 60;
-                careGiverStopWatchText.setText(hours + ":" + min + ":" + sec);
+                String time = "";
+
+                if(hours < 10)
+                    time = "0"+hours;
+                else
+                    time = ""+hours;
+
+                if(min < 10)
+                    time = time+":0"+min;
+                else
+                    time = time+":"+min;
+
+
+                if(sec < 10)
+                    time = time+":0"+sec;
+                else
+                    time = time+":"+sec;
+
+
+
+                careGiverStopWatchText.setText(time);
             }
         }
     }

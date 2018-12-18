@@ -77,21 +77,18 @@ public class ClientSignUpActivity extends BaseActivity {
                 strConfirmPassword = editConfirmPassword.getText().toString();
 
 
-                if (UserAccount.isEmpty(editName, editEmail, editPassword, editConfirmPassword))
-                {
-                    if (UserAccount.isEmailValid(editEmail))
-                    {
-                        if (strPassword.length() >5 ||strPassword.equals(strConfirmPassword))
-                        {
+                if (UserAccount.isEmpty(editName, editEmail, editPassword, editConfirmPassword)) {
+                    if (UserAccount.isEmailValid(editEmail)) {
+                        if (strPassword.length() > 5 || strPassword.equals(strConfirmPassword)) {
                             ClinetrRegistration();
 
                         } else {
 
-                            Toast.makeText(ClientSignUpActivity.this,"Please enter at least 6 digits password.",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ClientSignUpActivity.this, "Please enter at least 6 digits password.", Toast.LENGTH_SHORT).show();
 
                         }
                     } else {
-                        Toast.makeText(ClientSignUpActivity.this,"Please enter valid email.",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ClientSignUpActivity.this, "Please enter valid email.", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     UserAccount.EditTextPointer.setError("This can't be empty!");
@@ -118,24 +115,48 @@ public class ClientSignUpActivity extends BaseActivity {
                 Log.e("response", "check" + response);
                 try {
                     JSONObject mainobject = new JSONObject(response);
+
+                    JSONObject data = null;
+                    String clienttocken = null;
+                    String type = null;
                     int status = mainobject.getInt("status");
-                    String message = mainobject.getString("message");
+
                     if (status == 200) {
+                        try {
+                            if (mainobject.has("data"))
+                            {
+                                data = mainobject.getJSONObject("data");
 
-                        JSONObject data = mainobject.getJSONObject("data");
-                        String clienttocken = data.getString("token");
+                                if (data.has("token"))
+                                    clienttocken = data.getString("token");
 
-                        String type = data.getString("user_type");
+                                if (data.has("user_type"))
+                                    type = data.getString("user_type");
 
-                        SavedData.saveTocken(clienttocken);
-                        SavedData.saveTockenUserType(type);
-                        SavedData.saveUserPhone(Contectnumber);
+                                SavedData.saveTocken(clienttocken);
+                                SavedData.saveTockenUserType(type);
+                                SavedData.saveUserPhone(Contectnumber);
 
-                        SavedData.saveClientPhone("");
+                                SavedData.saveClientPhone("");
 
-                        S.I_clear(ClientSignUpActivity.this, ClientMainActivity.class, null);
-                        S.T(ClientSignUpActivity.this, "Success");
+                                S.I_clear(ClientSignUpActivity.this, ClientMainActivity.class, null);
+                                S.T(ClientSignUpActivity.this, "Success");
+                            } else {
+                                S.I_clear(ClientSignUpActivity.this, ClientMainActivity.class, null);
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            S.I_clear(ClientSignUpActivity.this, ClientMainActivity.class, null);
+                        }
+
                     } else {
+
+                        String message = "";
+                        if (mainobject.has("message"))
+                            message = mainobject.getString("message");
+                        Toast.makeText(ClientSignUpActivity.this, "" + message, Toast.LENGTH_SHORT).show();
+
 /*
                         Toast.makeText(ClientSignUpActivity.this, "Sorry Registration not Submitted!", Toast.LENGTH_SHORT).show();
 */

@@ -92,12 +92,10 @@ public class GetDirectionsData extends AsyncTask<Object, String, String> {
         try {
             // List<Marker> markers = new ArrayList<>();
             Marker carMarkers, eMarker;
-            if (CareGiverMainFragment.old_pickupLat != 0 && CareGiverMainFragment.old_pickupLong != 0)
-            {
+            if (CareGiverMainFragment.old_pickupLat != 0 && CareGiverMainFragment.old_pickupLong != 0) {
 
 
-                if (SavedData.getSaveType().equals("2"))
-                {
+                if (SavedData.getSaveType().equals("2")) {
                     carMarkers = mMap.addMarker(new MarkerOptions()
                             .position(new LatLng(CareGiverMainFragment.old_pickupLat, CareGiverMainFragment.old_pickupLat))
                             .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map_car)));
@@ -111,10 +109,8 @@ public class GetDirectionsData extends AsyncTask<Object, String, String> {
                 }
 
 
-            } else
-                {
-                if (SavedData.getSaveType().equals("2"))
-                {
+            } else {
+                if (SavedData.getSaveType().equals("2")) {
                     carMarkers = mMap.addMarker(new MarkerOptions()
                             .position(pickup)
                             .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map_car)));
@@ -129,8 +125,8 @@ public class GetDirectionsData extends AsyncTask<Object, String, String> {
 
 
             }
-
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(pickup, 15));
+            if (CareGiverMainFragment.is_center)
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(pickup, 15));
 
             eMarker = mMap.addMarker(new MarkerOptions()
                     .position(latLng)
@@ -205,22 +201,16 @@ public class GetDirectionsData extends AsyncTask<Object, String, String> {
                 rotate_handler.removeCallbacks(start_rotation);
                 if (total_rotation < diff) {
 
-                    if (is_postive_rotate)
-                    {
+                    if (is_postive_rotate) {
 
-                        carMarker.setRotation((CareGiverMainFragment.old_rotation + total_rotation)%360);
+                        carMarker.setRotation((CareGiverMainFragment.old_rotation + total_rotation) % 360);
 
-                    } else
-                        {
-                        if (CareGiverMainFragment.old_rotation - total_rotation >= 0)
-                        {
+                    } else {
+                        if (CareGiverMainFragment.old_rotation - total_rotation >= 0) {
                             carMarker.setRotation(CareGiverMainFragment.old_rotation - total_rotation);
+                        } else {
+                            carMarker.setRotation(360 - total_rotation);
                         }
-                        else
-                        {
-                            carMarker.setRotation(360- total_rotation);
-                        }
-
 
 
                     }
@@ -228,9 +218,7 @@ public class GetDirectionsData extends AsyncTask<Object, String, String> {
                     total_rotation = deivde + total_rotation;
 
                     rotate_handler.postDelayed(start_rotation, 150);
-                }
-                else
-                {
+                } else {
                     CareGiverMainFragment.old_rotation = rotate;
                     carMarker.setRotation(CareGiverMainFragment.old_rotation);
                 }
@@ -258,8 +246,7 @@ public class GetDirectionsData extends AsyncTask<Object, String, String> {
             if (rotate >= CareGiverMainFragment.old_rotation) {
                 diff = rotate - CareGiverMainFragment.old_rotation;
                 is_postive_rotate = true;
-                if (diff > 180)
-                {
+                if (diff > 180) {
                     diff = 360 - diff;
                     is_postive_rotate = false;
                 }
@@ -267,8 +254,7 @@ public class GetDirectionsData extends AsyncTask<Object, String, String> {
             } else {
                 diff = CareGiverMainFragment.old_rotation - rotate;
                 is_postive_rotate = false;
-                if (diff > 180)
-                {
+                if (diff > 180) {
                     diff = 360 - diff;
                     is_postive_rotate = true;
                 }

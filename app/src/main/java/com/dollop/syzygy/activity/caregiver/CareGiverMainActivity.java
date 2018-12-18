@@ -1,6 +1,8 @@
 package com.dollop.syzygy.activity.caregiver;
 
+import android.app.ActivityManager;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +28,7 @@ import com.dollop.syzygy.activity.BaseActivity;
 import com.dollop.syzygy.activity.PrivacyPolicyActivity;
 import com.dollop.syzygy.activity.TermAndConditionActivity;
 import com.dollop.syzygy.activity.WelcomeActivity;
+import com.dollop.syzygy.activity.client.ClientMainActivity;
 import com.dollop.syzygy.data.BaseItem;
 import com.dollop.syzygy.data.CustomDataProvider;
 import com.dollop.syzygy.fragment.caregiver.AddAmbulance;
@@ -35,6 +38,7 @@ import com.dollop.syzygy.fragment.caregiver.CareGiverMainFragment;
 import com.dollop.syzygy.fragment.caregiver.CareGiverYourHiresFragment;
 import com.dollop.syzygy.fragment.caregiver.ChangePassword;
 import com.dollop.syzygy.fragment.caregiver.TrustBadges;
+import com.dollop.syzygy.servics.LocationService;
 import com.dollop.syzygy.sohel.Const;
 import com.dollop.syzygy.sohel.Helper;
 import com.dollop.syzygy.sohel.JSONParser;
@@ -81,7 +85,7 @@ public class CareGiverMainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setToolbarWithBackButton(getString(R.string.app_name));
-        getClientProfile();
+
         currentFragment = 13;
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
@@ -110,13 +114,16 @@ public class CareGiverMainActivity extends BaseActivity {
         confMenu();
 
 
-        if (SavedData.getSaveType().equals("2")) {
-
-        } else {
-           // S.T(CareGiverMainActivity.this, "Your already register in to Caregiver");
+        if(!isMyServiceRunning(LocationService.class))
+        {
+            startService(new Intent(CareGiverMainActivity.this, LocationService.class));
         }
+    }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getClientProfile();
     }
 
     private void getClientProfile() {
@@ -555,7 +562,7 @@ public class CareGiverMainActivity extends BaseActivity {
                         S.T(CareGiverMainActivity.this, "check");
 */
                         currentFragment = 6;
-                    } else if (((BaseItem) object).getName().equals("Regiser For")) {
+                    } else if (((BaseItem) object).getName().equals("Register For")) {
                         S.E("register text click");
                     } else if (((BaseItem) object).getName().equals("About")) {
                         S.I(CareGiverMainActivity.this, AboutUsActivity.class, null);
@@ -660,4 +667,17 @@ public class CareGiverMainActivity extends BaseActivity {
         }
         return builder.toString();
     }
+
+
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }

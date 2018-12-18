@@ -72,6 +72,8 @@ public class Client_RatingActivity extends BaseActivity {
         amount.setText(bundle.getString("Amount"));
         Type = bundle.getString("Type");
         PaymentMode = bundle.getString("PaymentMode");
+
+
         if (PaymentMode.equals("cash")) {
             SheetImageview.setImageResource(R.drawable.cash);
         } else {
@@ -84,7 +86,7 @@ public class Client_RatingActivity extends BaseActivity {
             TimeLayout.setVisibility(View.VISIBLE);
             start_time.setText(bundle.getString("StartTime"));
             end_time.setText(bundle.getString("StopTime"));
-            total_time.setText(bundle.getString("TotalTime")+" min");
+            total_time.setText(bundle.getString("TotalTime") + " min");
         } else {
             type_Tv.setText(Type);
             typeimg.setImageResource(R.drawable.ic_ambulance_home);
@@ -97,12 +99,8 @@ public class Client_RatingActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if (ratingBar1.getRating() == 0.0) {
-                    S.T(Client_RatingActivity.this, "Please Give a Rating");}
-
-                    else if(describtion.getText().toString().trim().isEmpty()){
-                    S.T(Client_RatingActivity.this, "Please write description");
-                    }
-                 else {
+                    S.T(Client_RatingActivity.this, "Please Give a Rating");
+                } else {
                     SavedData.saveRatingStatus(false);
                     SavedData.saveMessageForsummery("");
                     AddFinalRatting();
@@ -154,11 +152,9 @@ public class Client_RatingActivity extends BaseActivity {
     private Map<String, String> getParam() {
 
         HashMap<String, String> postParams = new HashMap<>();
-        try
-        {
+        try {
             String description = "";
-            if( describtion.getText().toString()!= null)
-            {
+            if (describtion.getText().toString() != null) {
                 description = describtion.getText().toString();
                 description = description.trim();
             }
@@ -167,15 +163,14 @@ public class Client_RatingActivity extends BaseActivity {
             postParams.put("token", SavedData.gettocken_id());
             postParams.put("caregiver_id", caregiver_id);
             postParams.put("rating", String.valueOf(ratingBar1.getRating()));
-            postParams.put("feedback",description);
-        }
-        catch (Exception e)
-        {
+            postParams.put("feedback", description);
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         return postParams;
     }
+
     @Override
     public void onBackPressed() {
 

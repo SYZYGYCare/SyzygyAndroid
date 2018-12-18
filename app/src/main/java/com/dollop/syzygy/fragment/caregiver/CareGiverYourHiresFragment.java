@@ -142,8 +142,12 @@ public class CareGiverYourHiresFragment extends Fragment {
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
                             hireYourCaregiverModel = new HireYourCaregiverModel();
+                            if(jsonObject.has("full_name"))
                             hireYourCaregiverModel.setHirename(jsonObject.getString("full_name"));
+                            if(jsonObject.has("type"))
                             hireYourCaregiverModel.setType(jsonObject.getString("type"));
+                            if(jsonObject.has("transaction_id"))
+                            hireYourCaregiverModel.setTransaction_id(jsonObject.getString("transaction_id"));
                          /*   Log.e("", "" + jsonObject.getString("full_name"));*/
                             if (jsonObject.getString("type").equals("caregiver")) {
                                 if(jsonObject.has("profile_pic"))
@@ -221,7 +225,8 @@ public class CareGiverYourHiresFragment extends Fragment {
                 S.E("CheckResponsePArama3" + getParams());
                 try {
                     JSONObject mainobject = new JSONObject(response);
-                    if (mainobject.getString("status").equals("200")) {
+                    if (mainobject.getString("status").equals("200"))
+                    {
                         remainingAmount.setText(getString(R.string.rupyee_symbol) + " " + mainobject.getString("remaining amount") + " /-");
                     } else {
 

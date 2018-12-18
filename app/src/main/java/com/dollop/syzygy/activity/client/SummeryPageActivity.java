@@ -178,11 +178,13 @@ public class SummeryPageActivity extends BaseActivity {
               /*  String walletBalance = walletBalance;
                 double doubleAmount = Double.parseDouble(amountTotal);
                 double doubleWallet = Double.parseDouble(walletBalance);*/
-                if (remainAmount.getText().toString().equals("0")) {
-                    caregiverType="1";
+                if (remainAmount.getText().toString().equals("0"))
+                {
+                    Payfromwalletpopup();
+                   /* caregiverType="1";
                     paymentMode="2";
                     PayType = "online";
-                    payment_process.setVisibility(View.VISIBLE);
+                    payment_process.setVisibility(View.VISIBLE);*/
                 //    PaymentOnServer();
                 } else {
                   SelectPaymentMethode(remainAmount.getText().toString());
@@ -191,7 +193,7 @@ public class SummeryPageActivity extends BaseActivity {
 
             }
         });
-
+        SavedData.saveTimerTime("0" );
         getWalletBalance();
         is_start_thread = true;
         GetClientCurrentStatus();
@@ -205,6 +207,33 @@ public class SummeryPageActivity extends BaseActivity {
         });
 
     }
+
+
+    private void Payfromwalletpopup()
+    {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.payment_from_wallet);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCancelable(true);
+        Button cash = (Button) dialog.findViewById(R.id.contiune);
+        cash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                caregiverType="1";
+                paymentMode="2";
+
+                PayType = "online";
+                payment_process.setVisibility(View.VISIBLE);
+
+                //   PaymentOnServer();
+            }
+        });
+
+        dialog.show();
+    }
+
 
     private void getWalletBalance() {
         new JSONParser(SummeryPageActivity.this).parseVollyStringRequest(Const.URL.GET_WALLET_BALANCE, 1, getParamsForWallet(), new Helper() {
@@ -223,7 +252,8 @@ public class SummeryPageActivity extends BaseActivity {
 
                         doubleAmount = Double.parseDouble(amountTotal);
                          doubleWallet = Double.parseDouble( jsonObject.getString("wallet"));
-                        if (doubleAmount >= doubleWallet) {
+                        if (doubleAmount >= doubleWallet)
+                        {
                             double doubleRemain = doubleAmount - doubleWallet;
 
                             remainAmount.setText("" + new DecimalFormat("##.##").format(doubleRemain));
@@ -242,8 +272,8 @@ public class SummeryPageActivity extends BaseActivity {
 
                             //  SelectPaymentMethode(String.valueOf(doubleAmount));
                           //  upDateWallet(String.valueOf(doubleRemain));
-                            paymentOnServerParam();
-                            S.E("checkvalues if else"+doubleAmount+":amount"+doubleWallet+":wallet"+walletBalance);
+                           // paymentOnServerParam();
+                          //  S.E("checkvalues if else"+doubleAmount+":amount"+doubleWallet+":wallet"+walletBalance);
 
                         }
                     } else if (jsonObject.getString("status").equals("1")) {
@@ -631,7 +661,7 @@ String CaregiverId = "";
 
         String productName = "syzygy";
         String firstName = SavedData.getUserName();
-        transaction_id = "0nf7" + System.currentTimeMillis();
+        transaction_id = "" + System.currentTimeMillis();
         String email = SavedData.getUserEmail();
         String sUrl = "https://payumoney.com/mobileapp/payumoney/success.php";
         String fUrl = "https://payumoney.com/mobileapp/payumoney/failure.php";

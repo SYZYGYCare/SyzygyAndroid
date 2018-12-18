@@ -1,6 +1,8 @@
 package com.dollop.syzygy.activity.client;
 
 import android.Manifest;
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -37,6 +39,7 @@ import com.dollop.syzygy.R;
 import com.dollop.syzygy.activity.AboutUsActivity;
 import com.dollop.syzygy.activity.BaseActivity;
 import com.dollop.syzygy.activity.PrivacyPolicyActivity;
+import com.dollop.syzygy.activity.SplashActivity;
 import com.dollop.syzygy.activity.SupportDetailActivity;
 import com.dollop.syzygy.activity.TermAndConditionActivity;
 import com.dollop.syzygy.activity.WelcomeActivity;
@@ -48,6 +51,7 @@ import com.dollop.syzygy.fragment.client.ClientMainFragment;
 import com.dollop.syzygy.fragment.client.ReferAndEarnFragment;
 import com.dollop.syzygy.fragment.client.SupportClaimFragment;
 import com.dollop.syzygy.fragment.client.Your_Hires;
+import com.dollop.syzygy.servics.LocationService;
 import com.dollop.syzygy.sohel.Const;
 import com.dollop.syzygy.sohel.Helper;
 import com.dollop.syzygy.sohel.JSONParser;
@@ -264,6 +268,13 @@ public class ClientMainActivity extends BaseActivity
         fragmentManager1 = getSupportFragmentManager();
         initMenuFragment();
 
+
+        if(!isMyServiceRunning(LocationService.class))
+        {
+            startService(new Intent(ClientMainActivity.this, LocationService.class));
+        }
+
+
     }
 
     private void initMenuFragment() {
@@ -293,6 +304,10 @@ public class ClientMainActivity extends BaseActivity
         Bitmap br = BitmapFactory.decodeResource(getResources(), R.drawable.ic_clock_red);
         remainder.setBitmap(br);
 
+        MenuObject sheduled = new MenuObject("Scheduled caregiver");
+        Bitmap br1 = BitmapFactory.decodeResource(getResources(), R.drawable.schedule);
+        sheduled.setBitmap(br1);
+
         /*MenuObject addFr = new MenuObject("Tips Notification");
         BitmapDrawable bd = new BitmapDrawable(getResources(),
                 BitmapFactory.decodeResource(getResources(), R.drawable.ic_message));
@@ -302,6 +317,7 @@ public class ClientMainActivity extends BaseActivity
         menuObjects.add(send);
         menuObjects.add(like);
         menuObjects.add(remainder);
+        menuObjects.add(sheduled);
 //        menuObjects.add(addFr);
         return menuObjects;
     }
@@ -748,6 +764,10 @@ public class ClientMainActivity extends BaseActivity
         if (position == 3) {
             S.I(ClientMainActivity.this, ClientReminderActivity.class, null);
         }
+        if (position == 4)
+        {
+            S.I(ClientMainActivity.this, ScheduleActivity.class, null);
+        }
     }
 
     @Override
@@ -913,4 +933,15 @@ public class ClientMainActivity extends BaseActivity
         S.E(" token..." + SavedData.gettocken_id());
         return param;
     }
+
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

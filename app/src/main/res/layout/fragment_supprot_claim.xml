@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:hint="Enter Hired Service Id"
+            android:hint="Enter Transaction Id"
 
             android:imeOptions="actionDone"
             android:inputType="number"

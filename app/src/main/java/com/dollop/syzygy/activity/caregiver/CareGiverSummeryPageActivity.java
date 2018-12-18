@@ -161,10 +161,7 @@ public class CareGiverSummeryPageActivity extends BaseActivity {
 
                 if (remainAmount.getText().toString().equals("0"))
                 {
-                    caregiverType="1";
-                    paymentMode="2";
-                    PayType = "online";
-                    PaymentOnServerForCaregiver();
+                    Payfromwalletpopup();
                 }
                 else
                 {
@@ -189,6 +186,33 @@ public class CareGiverSummeryPageActivity extends BaseActivity {
     }
 
 
+    private void Payfromwalletpopup()
+    {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.payment_from_wallet);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCancelable(true);
+        Button cash = (Button) dialog.findViewById(R.id.contiune);
+        cash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                caregiverType="1";
+                paymentMode="2";
+                PayType = "online";
+                transaction_id = "" + System.currentTimeMillis();
+                PaymentOnServerForCaregiver();
+
+                //   PaymentOnServer();
+            }
+        });
+
+        dialog.show();
+    }
+
+
+
     String paymentMode, caregiverType, type = "", transaction_id = "", PayType = "";
 
     private void SelectPaymentMethodeForCaregiver() {
@@ -207,7 +231,7 @@ public class CareGiverSummeryPageActivity extends BaseActivity {
                 S.E("if is runnning AmmbulanceActivity");
                 /* PathKmHelper.getInstance().deleteAll();*/
                 paymentMode = "1";
-                transaction_id = "";
+                transaction_id = "" +System.currentTimeMillis();
                 PayType = "cash";
 
                 caregiverType = "1";

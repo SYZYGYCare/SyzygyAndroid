@@ -62,7 +62,7 @@
             android:clickable="true"
             android:focusable="true"
             android:padding="@dimen/dimen_10dp"
-            android:text="Hire Your Caregiver "
+            android:text="Hire Caregiver "
             android:textAllCaps="false"
             android:textColor="#000"
             android:textSize="@dimen/text_size_normal" />

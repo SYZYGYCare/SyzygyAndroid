@@ -48,6 +48,7 @@ import com.dollop.syzygy.sohel.Helper;
 import com.dollop.syzygy.sohel.JSONParser;
 import com.dollop.syzygy.sohel.S;
 import com.dollop.syzygy.sohel.SavedData;
+import com.dollop.syzygy.utility.Constants;
 import com.dollop.syzygy.utility.GPSTrackerNew;
 import com.dollop.syzygy.utility.GpsHelper;
 import com.google.android.gms.common.ConnectionResult;
@@ -67,6 +68,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -145,7 +147,7 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
     private GpsHelper gpsHelper;
     private boolean isFirstTime;
     private FusedLocationProviderClient mFusedLocationProviderClient;
-    private double pickupLat, pickupLong, destLat, destLong;
+    private double pickupLat, pickupLong, destLat =0, destLong =0;
     public static double old_pickupLat = 0, old_pickupLong = 0;
     private String FinalSource = "";
     private String FinalDestination = "";
@@ -153,6 +155,9 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
     String complete_status = "0";
     private int RESULT_CANCELED = 1;
     public static float old_rotation = 0;
+    public static boolean is_center = true;
+    ImageView center_button = null;
+
 
     public static boolean hasPermissions(Context context, String... permissions) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
@@ -181,6 +186,7 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
         buttonLayout = (LinearLayout) rootView.findViewById(R.id.buttonLayout);
         buttonLayoutStart = (LinearLayout) rootView.findViewById(R.id.buttonLayoutStart);
         linearLayoutEndId = (LinearLayout) rootView.findViewById(R.id.linearLayoutEndId);
+        center_button = (ImageView) rootView.findViewById(R.id.center_button);
 
         mainFragmentBtnAccept = (Button) rootView.findViewById(R.id.mainFragmentBtnAccept);
         mainFragmentBtnDeny = (Button) rootView.findViewById(R.id.mainFragmentBtnDeny);
@@ -198,6 +204,24 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
         buttomUserGenderStart = (TextView) rootView.findViewById(R.id.buttomUserGenderStart);
         end_ride = (TextView) rootView.findViewById(R.id.end_ride);
         reset_address = (TextView) rootView.findViewById(R.id.reset_address);
+
+        center_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    center_button.setVisibility(View.GONE);
+                    is_center = true;
+                    LatLng UCA = new LatLng(pickupLat, pickupLong);
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(UCA, 15));
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        });
+
 
         if (!hasPermissions(getActivity(), PERMISSIONS)) {
             ActivityCompat.requestPermissions(getActivity(), PERMISSIONS, PERMISSION_ALL);
@@ -255,7 +279,7 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
                             buttonLayout.setVisibility(View.GONE);
                             buttonLayoutStart.setVisibility(View.GONE);
                             SavedData.saveAcceptLayoutKeep(false);
-                            S.T(getActivity(), "Client Canceled your last Appoinment !");
+                            S.T(getActivity(), "Request has been cancelled");
                             S.I_clear(getActivity(), CareGiverMainActivity.class, null);
                         } else if (msg.getString("user_type").equals("11")) {
                             Intent intent1 = new Intent(getActivity(), ChatActivity.class);
@@ -278,12 +302,25 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
                             buttonLayout.setVisibility(View.VISIBLE);
                             buttomUserName.setText(full_name);
                             buttomUserNameStart.setText(full_name);
+
+                            if(gender == null || gender.equalsIgnoreCase("")|| gender.equalsIgnoreCase("null"))
+                            {
+                                gender = SavedData.getClientGender();
+
+                            }
+                            else
+                            {
+                                SavedData.saveClientGender(gender);
+                            }
+
                             if (gender.equals("null")) {
                                 buttomUserGender.setText("No gender detail found");
                                 buttomUserGenderStart.setText("No gender detail found");
                             } else {
                                 buttomUserGender.setText(gender);
                                 buttomUserGenderStart.setText(gender);
+
+                                SavedData.saveClientGender(gender);
                             }
                             lat = requestLatitude;
                             lng = requestLongitud;
@@ -406,6 +443,8 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
                         // TODO: Handle the error.
                     }
                 }
+
+                SavedData.saveClientGender("");
             }
         });
 
@@ -524,7 +563,8 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
 
             List<Marker> markers = new ArrayList<>();
 
-            if (SavedData.getSaveType().equals("2")) {
+            if (SavedData.getSaveType().equals("2"))
+            {
                 carMarker = googleMap.addMarker(new MarkerOptions()
                         .position(new LatLng(pickupLat, pickupLong))
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map_car)));
@@ -537,10 +577,11 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
             }
 
 
-            eMarker = googleMap.addMarker(new MarkerOptions()
+       /*     eMarker = googleMap.addMarker(new MarkerOptions()
                     .position(new LatLng(destLat, destLong))
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location_green)));
-            markers.add(eMarker);
+            markers.add(eMarker);*/
+
             if (isFirstTime)
                 focusMap(googleMap, markers);
 
@@ -906,28 +947,19 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
     }
 
     @Override
-    public void onResume() {
+    public void onResume()
+    {
         super.onResume();
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mRegistrationBroadcastReceiver, new IntentFilter(Config.REGISTRATION_COMPLETE));
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mRegistrationBroadcastReceiver, new IntentFilter(Config.PUSH_NOTIFICATION));
         NotificationUtils.clearNotifications(getActivity());
-    }
-
-    @Override
-    public void onPause() {
-        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mRegistrationBroadcastReceiver);
-        super.onPause();
-    }
-
-    @Override
-    public void onMapReady(final GoogleMap googleMap) {
 
 
-        try {
-            this.googleMap = googleMap;
-            setUpMap();
+        try
+        {
             String time = SavedData.getNotificationTime();
-            if (time != null && !time.equalsIgnoreCase("")) {
+            if (time != null && !time.equalsIgnoreCase(""))
+            {
                 long notii_time = Long.parseLong(time);
                 Date currentTime = Calendar.getInstance().getTime();
 
@@ -936,19 +968,32 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
                 long diffInMs = curretim - notii_time;
 
                 long diffInSec = TimeUnit.MILLISECONDS.toSeconds(diffInMs);
-                if (diffInSec > 30) {
+
+
+                if (diffInSec > 30)
+                {
                     SavedData.saveNotificationTIme("");
                     GetCurrentStatus();
                 } else {
-                    Handler handler = new Handler();
+
+                    diffInSec = 30- diffInSec;
+
+                            Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
 
-                            if (!SavedData.getAcceptLayout()) {
-                                buttonLayout.setVisibility(View.GONE);
-                                buttonLayoutStart.setVisibility(View.GONE);
-                                googleMap.clear();
+                            try
+                            {
+                                if (!SavedData.getAcceptLayout()) {
+                                    buttonLayout.setVisibility(View.GONE);
+                                    buttonLayoutStart.setVisibility(View.GONE);
+                                    googleMap.clear();
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                e.printStackTrace();
                             }
 
 
@@ -961,7 +1006,44 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
             } else {
                 GetCurrentStatus();
             }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 
+    @Override
+    public void onPause() {
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mRegistrationBroadcastReceiver);
+        super.onPause();
+    }
+
+    @Override
+    public void onMapReady(final GoogleMap googleMap1) {
+
+
+        try {
+            this.googleMap = googleMap1;
+            setUpMap();
+
+            googleMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
+
+                private float currentZoom = -1;
+
+                @Override
+                public void onCameraChange(CameraPosition pos) {
+                    if (pos.zoom != currentZoom) {
+                        if (currentZoom > 0 && currentZoom > pos.zoom) {
+                            is_center = false;
+                            center_button.setVisibility(View.VISIBLE);
+
+                        }
+                        currentZoom = pos.zoom;
+                        // do you action here
+                    }
+                }
+            });
 
            /*int second =0;
            int minutes =0;
@@ -1070,7 +1152,7 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
                     e.printStackTrace();
                 }*/
 
-                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(UCA, 17));
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(UCA, 15));
             }
 
             LocationRequest mLocationRequest = new LocationRequest();
@@ -1105,7 +1187,8 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
         rotate = location.getBearing();
 
 
-        if (is_processing == false) {
+        if (is_processing == false)
+        {
 
             try {
                 updateMarkerOnMap();
@@ -1114,7 +1197,8 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
                 {
                     is_processing = true;
                     UpdateLocation();
-                } else if (caregiverCurrentStatus != null) {
+                } else if (caregiverCurrentStatus != null)
+                {
                     if (caregiverCurrentStatus.getBookingstatus().equalsIgnoreCase("start") || caregiverCurrentStatus.getBookingstatus().equalsIgnoreCase("accepted")) {
                         is_processing = true;
                         UpdateLocation();
@@ -1246,7 +1330,8 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
     }
 
 
-    private void Update_Deny_status() {
+    private void Update_Deny_status()
+    {
         new JSONParser(getActivity()).parseVollyStringRequest(Const.URL.DENY_REQUEST, 1, getDeny_parameter(), new Helper() {
             public void backResponse(String response) {
                 if (response != null) {
@@ -1302,9 +1387,20 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
             prams.put("token", SavedData.gettocken_id());
             prams.put("lattitude", "" + pickupLat);
             prams.put("longitude", "" + pickupLong);
-            if (is_destination_done == false) {
-                prams.put("dest_lattitude", "");
-                prams.put("dest_longitude", "");
+            if (is_destination_done == false)
+            {
+                if(destLat == 0)
+                {
+                    prams.put("dest_lattitude", "");
+                    prams.put("dest_longitude", "");
+                }
+                else
+                {
+                    prams.put("dest_lattitude", ""+destLat);
+                    prams.put("dest_longitude", ""+destLong);
+                }
+
+
 
                 //prams.put("dest_lattitude", "" + requestLatitude);
                 //  prams.put("dest_longitude", "" + requestLongitud);
@@ -1681,6 +1777,17 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
             buttonLayout.setVisibility(View.VISIBLE);
             buttomUserName.setText(full_name);
             buttomUserNameStart.setText(full_name);
+
+            if(gender == null || gender.equalsIgnoreCase("")|| gender.equalsIgnoreCase("null"))
+            {
+                gender = SavedData.getClientGender();
+
+            }
+            else
+            {
+                 SavedData.saveClientGender(gender);
+            }
+
             if (gender.equals("null")) {
                 buttomUserGender.setText("No gender detail found");
                 buttomUserGenderStart.setText("No gender detail found");

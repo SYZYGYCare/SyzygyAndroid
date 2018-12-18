@@ -119,7 +119,7 @@ public class ChatActivity extends BaseActivity implements EmojiconGridFragment.O
                         type = msg.getString("token_user_type");
 
                         if (msg.getString("user_type").equals("11")) {
-                            msgArrayList.clear();
+                           // msgArrayList.clear();
                             getMessages();
                         } else if (msg.getString("user_type").equals("7")) {
                             S.T(ChatActivity.this, "Client Canceled your last Appoinment !");

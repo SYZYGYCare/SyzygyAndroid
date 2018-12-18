@@ -37,34 +37,66 @@ public class ChatAdapter_1 extends RecyclerView.Adapter<ChatAdapter_1.MyViewHold
 
         public MyViewHolder(View v) {
             super(v);
-            messageText = (EmojiconTextView) v.findViewById(R.id.message_text);
-            userName = (TextView) v.findViewById(R.id.userName);
-            actionView = (TextView) v.findViewById(R.id.action);
+          try
+          {
+              messageText = (EmojiconTextView) v.findViewById(R.id.message_text);
+              userName = (TextView) v.findViewById(R.id.userName);
+              actionView = (TextView) v.findViewById(R.id.action);
+          }
+          catch (Exception e)
+          {
+              e.printStackTrace();
+          }
+
         }
     }
 
     public ChatAdapter_1(Context context, List<Messages> moviesList, String type) {
-        this.browseList = moviesList;
-        this.context = context;
-        this.type = type;
+
+        try
+        {
+            this.browseList = moviesList;
+            this.context = context;
+            this.type = type;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+
     }
 
     @Override
     public int getItemViewType(int position) {
-        temp_pos = position;
-        if (browseList.size() > position + 1) {
-            return getItemViewType(browseList.get(position + 1), position);
-        } else {
-            return getItemViewType(browseList.get(position), position);
-        }
+
+
+
+            temp_pos = position;
+            if (browseList.size() > position + 1) {
+                return getItemViewType(browseList.get(position + 1), position);
+            } else {
+                return getItemViewType(browseList.get(position), position);
+            }
+
+
     }
 
     public void setFilter(List<Messages> newData) {
-        browseList = newData;
-        notifyDataSetChanged();
+        try
+        {
+            browseList = newData;
+            notifyDataSetChanged();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
     }
 
-    private int getItemViewType(Messages message, int position) {
+    private int getItemViewType(Messages message, int position)
+    {
         userId = message.getSender_type();
         S.E("user id : " + message.getSender_type());
         if (type.equals("1")) {
@@ -123,8 +155,15 @@ public class ChatAdapter_1 extends RecyclerView.Adapter<ChatAdapter_1.MyViewHold
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        Messages messages = browseList.get(position);
-        holder.messageText.setText(messages.getMsg());
+       try
+       {
+           Messages messages = browseList.get(position);
+           holder.messageText.setText(messages.getMsg());
+       }
+       catch (Exception e )
+       {
+           e.printStackTrace();
+       }
     }
 
     @Override

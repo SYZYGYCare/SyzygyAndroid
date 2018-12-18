@@ -120,6 +120,7 @@ public class AddAmbulance extends Fragment {
     String checkImage4 = "";
     Unbinder unbinder;
     String ambulanceTypeID;
+    String service_id = "";
     CareGiverSpecialization careGiverSpecialization;
     ArrayList<CareGiverSpecialization> careGiverSpecializationslist = new ArrayList<>();
     ArrayList<String> careGiverSpecializations_id = new ArrayList<>();
@@ -213,13 +214,15 @@ public class AddAmbulance extends Fragment {
             }
         });
 
-        getCityList();
+
         caregiversppiner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (adapterView.getItemAtPosition(i).toString().equals("Select Ambulance Type")) {
                 } else {
                     ambulanceTypeID = careGiverSpecializationslist.get(i).getCaregiver_specialization_id();
+                    service_id = careGiverSpecializationslist.get(i).getCaregiver_specialization_id();
+                    getCityList();
                 }
 
             }
@@ -231,13 +234,19 @@ public class AddAmbulance extends Fragment {
         });
         save.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if (TextUtils.isEmpty(vehicalno.getText().toString())) {
+            public void onClick(View view)
+            {
+                String vehi_no = vehicalno.getText().toString().trim();
+                String vehi_mod_no = vehicalmodelno.getText().toString().trim();
+                if (TextUtils.isEmpty(vehi_no))
+                {
+                    vehicalno.setText("");
                     vehicalno.requestFocus();
                     vehicalno.setError("Please feel Your vehical no.");
                     return;
-                } else if (TextUtils.isEmpty(vehicalmodelno.getText().toString())) {
+                } else if (TextUtils.isEmpty(vehi_mod_no)) {
                     vehicalmodelno.requestFocus();
+                    vehicalmodelno.setText("");
                     vehicalmodelno.setError("Please feel Your vehical model_no");
                     return;
                 } else if (caregiversppiner.getSelectedItem().equals("Select Ambulance Type")) {
@@ -267,8 +276,13 @@ public class AddAmbulance extends Fragment {
                     S.E("City ka response" + response);
                     S.E("city ka param" + response);
                     JSONObject object1 = new JSONObject(response);
-                    if (object1.getString("status").equals("200")) {
+                    if (object1.getString("status").equals("200"))
+                    {
                         JSONArray data = object1.getJSONArray("data");
+
+                        citynameList.clear();
+                        CityId.clear();
+
                         citynameList.add("Select a City");
                         CityId.add("");
 
@@ -317,6 +331,7 @@ public class AddAmbulance extends Fragment {
     private Map<String, String> getParamCityName() {
         HashMap<String, String> params = new HashMap<>();
         params.put("token", SavedData.gettocken_id());
+        params.put("service_id", service_id);
 
         return params;
     }
@@ -540,6 +555,7 @@ public class AddAmbulance extends Fragment {
             protected Map<String, DataPart> getByteData() {
                 Map<String, DataPart> params = new HashMap<>();
                 try {
+
                     Bitmap bitmap3 = ((BitmapDrawable) licencdocument.getDrawable()).getBitmap();
                     Log.e("lincensId ", "Image_post" + bitmap3);
                     if (bitmap3 != null)
@@ -549,12 +565,12 @@ public class AddAmbulance extends Fragment {
                     if (bitmap4 != null)
                         params.put("registration_card", new DataPart(System.currentTimeMillis() + "Image_event.png", AppHelper.getFileDataFromDrawable(bitmap4), "image/png"));
 
-                    Bitmap bitmap5 = ((BitmapDrawable) documentImageView.getDrawable()).getBitmap();
+                    Bitmap bitmap5 = ((BitmapDrawable) documentImageView1.getDrawable()).getBitmap();
                     Log.e("registration_ ", "Image_post" + bitmap5);
                     if (bitmap5 != null)
                         params.put("image1", new DataPart(System.currentTimeMillis() + "Image_event.png", AppHelper.getFileDataFromDrawable(bitmap5), "image/png"));
 
-                    Bitmap bitmap6 = ((BitmapDrawable) documentImageView.getDrawable()).getBitmap();
+                    Bitmap bitmap6 = ((BitmapDrawable) documentImageView2.getDrawable()).getBitmap();
                     Log.e("registration_ ", "Image_post" + bitmap4);
                     if (bitmap6 != null)
                         params.put("image2", new DataPart(System.currentTimeMillis() + "Image_event.png", AppHelper.getFileDataFromDrawable(bitmap6), "image/png"));

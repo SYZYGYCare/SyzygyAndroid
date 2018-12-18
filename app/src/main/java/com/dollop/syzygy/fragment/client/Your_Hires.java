@@ -158,26 +158,47 @@ public class Your_Hires extends Fragment {
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
                             hireYourCaregiverModel = new HireYourCaregiverModel();
+                            if(jsonObject.has("full_name"))
                             hireYourCaregiverModel.setHirename(jsonObject.getString("full_name"));
+                            if(jsonObject.has("type"))
                             hireYourCaregiverModel.setType(jsonObject.getString("type"));
+
+                            if(jsonObject.has("transaction_id"))
+                            hireYourCaregiverModel.setTransaction_id(jsonObject.getString("transaction_id"));
+
+                            if(jsonObject.has("payment_history_id"))
                             hireYourCaregiverModel.setHiredCaregiverId(jsonObject.getString("payment_history_id"));
                          /*   Log.e("", "" + jsonObject.getString("full_name"));*/
                             if (jsonObject.getString("type").equals("caregiver")) {
+                                if(jsonObject.has("profile_pic"))
                                 hireYourCaregiverModel.setHireimage(jsonObject.getString("profile_pic"));
+                                if(jsonObject.has("ratingReview"))
                                 hireYourCaregiverModel.setHirerating(jsonObject.getString("ratingReview") + "");
+                                if(jsonObject.has("start_time"))
                                 hireYourCaregiverModel.setStart_tme(jsonObject.getString("start_time"));
+                                if(jsonObject.has("end_time"))
                                 hireYourCaregiverModel.setEnd_time(jsonObject.getString("end_time"));
+                                if(jsonObject.has("total_time"))
                                 hireYourCaregiverModel.setTotalkM(jsonObject.getString("total_time"));
+                                if(jsonObject.has("payment_mode"))
                                 hireYourCaregiverModel.setPaymentMode(jsonObject.getString("payment_mode"));
+                                if(jsonObject.has("amount"))
                                 hireYourCaregiverModel.setTotalAmount(jsonObject.getString("amount"));
                               /*  hireYourCaregiverModel.s*/
                             } else if (jsonObject.getString("type").equals("ambulance")){
+                                if(jsonObject.has("payment_mode"))
                                 hireYourCaregiverModel.setPaymentMode(jsonObject.getString("payment_mode"));
+                                if(jsonObject.has("profile_pic"))
                                 hireYourCaregiverModel.setHireimage(jsonObject.getString("profile_pic"));
+                                if(jsonObject.has("ratingReview"))
                                 hireYourCaregiverModel.setHirerating(jsonObject.getString("ratingReview") + "");
+                                if(jsonObject.has("source"))
                                 hireYourCaregiverModel.setSourcename(jsonObject.getString("source"));
+                                if(jsonObject.has("destination"))
                                 hireYourCaregiverModel.setDestianme(jsonObject.getString("destination"));
+                                if(jsonObject.has("total_kilometer"))
                                 hireYourCaregiverModel.setTotalkM(jsonObject.getString("total_kilometer"));
+                                if(jsonObject.has("amount"))
                                 hireYourCaregiverModel.setTotalAmount(jsonObject.getString("amount"));
                             }
 

@@ -1,6 +1,7 @@
 package com.dollop.syzygy.activity;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -106,7 +107,8 @@ public class SplashActivity extends AppCompatActivity implements
 
             new Handler().postDelayed(new Runnable() {
                 @Override
-                public void run() {
+                public void run()
+                {
                     startService(new Intent(SplashActivity.this, LocationService.class));
                     if (SavedData.gettocken_id() .equals("")) {   Intent intent = new Intent(SplashActivity.this, WelcomeActivity.class);
                         startActivity(intent);
@@ -215,7 +217,8 @@ public class SplashActivity extends AppCompatActivity implements
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            startService(new Intent(SplashActivity.this, LocationService.class));
+
+
                             if (SavedData.gettocken_id().equals("")){
                                 Intent intent = new Intent(SplashActivity.this, WelcomeActivity.class);
                                 startActivity(intent);
@@ -264,6 +267,9 @@ public class SplashActivity extends AppCompatActivity implements
         }
 
     }
+
+
+
 }
 
 

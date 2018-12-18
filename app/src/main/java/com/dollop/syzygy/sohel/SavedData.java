@@ -28,7 +28,9 @@ public class SavedData {
     private static final String CLIENT_ID = "clientId";
     private static final String HIRE_CAREGIVER_ID = "hireCareGiverId";
     private static final String CAREGIVER_ID = "CareGiver_id";
+    private static final String CLIENT_GENDER = "client_gender";
     private static final String START_TIMER = "startTimer";
+    private static final String TIMER_LAST_TIME = "timer_last_time";
     private static final String SAVE_SRC_LAT_AMBULANCE = "save_ambulance_src_lat";
     private static final String SAVE_SRC_LONG_AMBULANCE = "save_ambulance_src_long";
     private static final String SAVE_DEST_LAT_AMBULANCE = "save_ambulance_dest_lat";
@@ -482,6 +484,18 @@ public class SavedData {
         editor.apply();
     }
 
+    public static String getClientGender() {
+        return getInstance().getString(CLIENT_GENDER, null);
+    }
+
+    public static void saveClientGender(String hireCareGiverId) {
+        SharedPreferences.Editor editor = getInstance().edit();
+        editor.putString(CLIENT_GENDER, hireCareGiverId);
+        editor.apply();
+    }
+
+
+
     public static String getCareGiverId() {
         return getInstance().getString(CAREGIVER_ID, null);
     }
@@ -491,6 +505,17 @@ public class SavedData {
         editor.putString(CAREGIVER_ID, hireCareGiverId);
         editor.apply();
     }
+
+    public static String getTimerTime() {
+        return getInstance().getString(TIMER_LAST_TIME, null);
+    }
+
+    public static void saveTimerTime(String startTimer) {
+        SharedPreferences.Editor editor = getInstance().edit();
+        editor.putString(TIMER_LAST_TIME, startTimer);
+        editor.apply();
+    }
+
 
     public static String getStartTimer() {
         return getInstance().getString(START_TIMER, null);

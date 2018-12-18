@@ -131,12 +131,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     StartTimeAmbulance();
                     break;
                 case "9":
-
+                    action = "Stop Timer";
                     //clock pause client side
                     responseFromCaregiver();
                     break;
                 case "8":
                     //clock resume client side
+                    action = "Start Timer";
                     responseFromCaregiver();
                     break;
                 case "6":

@@ -8,15 +8,16 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_centerInParent="true"
-        android:layout_height="250dp"
-        android:layout_margin="@dimen/dimen_1dp"
+        android:layout_height="150dp"
+
+        android:layout_margin="@dimen/dimen_20dp"
         android:background="@drawable/clientpop">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Choose payment mode"
-            android:textSize="@dimen/dimen_24dp"
+            android:textSize="20sp"
             android:gravity="center"
             android:textColor="@color/text_primary"
             android:textStyle="bold"
@@ -34,7 +35,7 @@
             android:layout_marginBottom="@dimen/dimen_10dp">
 
             <Button
-                android:layout_width="@dimen/dimen_140dp"
+                android:layout_width="@dimen/dimen_100dp"
                 android:layout_height="wrap_content"
                 android:text="Cash"
                 android:textSize="@dimen/dimen_16dp"
@@ -46,7 +47,7 @@
                 android:id="@+id/cash_Btn"/>
 
             <Button
-                android:layout_width="@dimen/dimen_140dp"
+                android:layout_width="@dimen/dimen_100dp"
                 android:layout_height="wrap_content"
                 android:text="Online"
                 android:textSize="@dimen/dimen_16dp"

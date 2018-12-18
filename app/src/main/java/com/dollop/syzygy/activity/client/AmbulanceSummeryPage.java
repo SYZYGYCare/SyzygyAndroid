@@ -94,7 +94,7 @@ public class AmbulanceSummeryPage extends BaseActivity {
     JSONObject msg;
     String transaction_id = "";
     String FinalSource, FinalDestination, FinalAmount, paymentMode, caregiverType, type = "", Start_time, source_location, destination_location, caregiver_id, stop_time, total_time, hire_caregiver_id, total_kilometer;
-    String Amount, PayType;
+    String Amount, PayType = "cash";
     int rupees;
     private String min_charges = "0.0";
     private TextView bywalletAmount;
@@ -327,17 +327,19 @@ public class AmbulanceSummeryPage extends BaseActivity {
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ActivityCheck.equals("Client")) {
+
+
+                if (ActivityCheck.equals("Client"))
+                {
                     /* RatingPopup();*/
-                    if (remainAmount.getText().toString().equals("0")) {
-                        caregiverType = "2";
+                    if (remainAmount.getText().toString().equals("0"))
+                    {
+                      /*  caregiverType = "2";
                         PayType = "online";
                         paymentMode = "2";
+                        payment_process.setVisibility(View.VISIBLE);*/
+                        Payfromwalletpopup();
 
-                        payment_process.setVisibility(View.VISIBLE);
-
-                /*        PaymentOnServer();
-                        UpdateCompletestatus();*/
                     } else {
                         SelectPaymentMethode(remainAmount.getText().toString());
 
@@ -346,12 +348,8 @@ public class AmbulanceSummeryPage extends BaseActivity {
 
 
                     if (remainAmount.getText().toString().equals("0")) {
-                        // payment_process.setVisibility(View.VISIBLE);
-                        /*paymentMode = "1";
 
-                        PayType = "cash";*/
-
-                        transaction_id = "";
+                       /* transaction_id = "";
                         PayType = "online";
                         paymentMode = "2";
 
@@ -360,8 +358,11 @@ public class AmbulanceSummeryPage extends BaseActivity {
                         } else {
                             caregiverType = "1";
                         }
+                        PaymentOnServerForCaregiver();*/
 
-                        PaymentOnServerForCaregiver();
+                        Payfromwalletpopup();
+
+
 
                     } else {
                         SelectPaymentMethodeForCaregiver(remainAmount.getText().toString());
@@ -411,7 +412,58 @@ public class AmbulanceSummeryPage extends BaseActivity {
     }
 
 
-    private void SelectPaymentMethode(final String amount) {
+    private void Payfromwalletpopup()
+    {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.payment_from_wallet);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCancelable(true);
+        Button cash = (Button) dialog.findViewById(R.id.contiune);
+        cash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                if (ActivityCheck.equals("Client"))
+                {
+
+                        caregiverType = "2";
+                        PayType = "online";
+                        paymentMode = "2";
+                        payment_process.setVisibility(View.VISIBLE);
+
+
+                } else if (ActivityCheck.equals("Ambulance")) {
+
+
+                        PayType = "online";
+                        paymentMode = "2";
+
+                    transaction_id = ""  +System.currentTimeMillis();
+                        if (type.equals("ambulance")) {
+                            caregiverType = "2";
+                        } else {
+                            caregiverType = "1";
+                        }
+                        PaymentOnServerForCaregiver();
+
+
+
+                }
+
+
+                //   PaymentOnServer();
+            }
+        });
+
+        dialog.show();
+    }
+
+
+
+
+    private void SelectPaymentMethode(final String amount)
+    {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.selectpaymentpop_uplayout);
@@ -477,6 +529,7 @@ public class AmbulanceSummeryPage extends BaseActivity {
                         if (doubleAmount >= doubleWallet) {
                             double doubleRemain = doubleAmount - doubleWallet;
 
+                            //totalAmount.setText();
                             remainAmount.setText("" + new DecimalFormat("##.##").format(doubleRemain));
                             bywalletAmount.setText(doubleWallet + "");
                             S.E("checkvalues if" + doubleAmount + ":amount" + doubleWallet + ":wallet" + walletBalance);
@@ -814,7 +867,10 @@ public class AmbulanceSummeryPage extends BaseActivity {
                 S.E("if is runnning AmmbulanceActivity");
                 /* PathKmHelper.getInstance().deleteAll();*/
                 paymentMode = "1";
-                transaction_id = "";
+
+
+                transaction_id = ""+ System.currentTimeMillis();
+
                 PayType = "cash";
                 if (type.equals("ambulance")) {
                     caregiverType = "2";
@@ -826,28 +882,7 @@ public class AmbulanceSummeryPage extends BaseActivity {
 
                 UpdateCompletestatus();
                 is_start_thread = false;
-                Bundle bundle = new Bundle();
-                try {
-                    bundle.putString("FullName", msg.getString("full_name"));
-                    bundle.putString("Type", "ambulance");
-                    bundle.putString("Picture", msg.getString("profile_pic"));
-                    bundle.putString("Amount", totalAmount.getText().toString());
-                    bundle.putString("StartTime", msg.getString("source_location"));
-                    bundle.putString("StopTime", msg.getString("destination_location"));
-                    bundle.putString("TotalTime", "");
-                    bundle.putString("PaymentMode", PayType);
-                    bundle.putString("client_id", client_id);
-                    SavedData.saveAmbulance(false);
-                    SavedData.saveMessageForsummery("");
-                    SavedData.savePaymentStatus(false);
-                    SavedData.saveRatingStatus(true);
 
-
-                    S.I_clear(AmbulanceSummeryPage.this, CareGiverRatingActivity.class, bundle);
-
-                } catch (JSONException e) {
-                    S.E("check exception" + e);
-                }
 
 
             }
@@ -856,7 +891,8 @@ public class AmbulanceSummeryPage extends BaseActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-
+                paymentMode = "2";
+                PayType = "online";
                 payment_process.setVisibility(View.VISIBLE);
 
 
@@ -889,7 +925,8 @@ public class AmbulanceSummeryPage extends BaseActivity {
                     int status = mainobject1.getInt("status");
                     String message = mainobject1.getString("message");
 
-                    if (status == 200) {
+                    if (status == 200)
+                    {
                         if (doubleAmount >= doubleWallet) {
                             double doubleRemain = doubleAmount - doubleWallet;
 
@@ -904,11 +941,32 @@ public class AmbulanceSummeryPage extends BaseActivity {
                             bywalletAmount.setText(doubleAmount + "");
                             //  SelectPaymentMethode(String.valueOf(doubleAmount));
                             upDateUserWallet(String.valueOf(doubleRemain));
-                            paymentOnServerParam();
+                           // paymentOnServerParam();
                             S.E("checkvalues if else" + doubleAmount + ":amount" + doubleWallet + ":wallet" + walletBalance);
 
                         }
+                        Bundle bundle = new Bundle();
+                        try {
+                            bundle.putString("FullName", msg.getString("full_name"));
+                            bundle.putString("Type", "ambulance");
+                            bundle.putString("Picture", msg.getString("profile_pic"));
+                            bundle.putString("Amount", totalAmount.getText().toString());
+                            bundle.putString("StartTime", msg.getString("source_location"));
+                            bundle.putString("StopTime", msg.getString("destination_location"));
+                            bundle.putString("TotalTime", "");
+                            bundle.putString("PaymentMode", PayType);
+                            bundle.putString("client_id", client_id);
+                            SavedData.saveAmbulance(false);
+                            SavedData.saveMessageForsummery("");
+                            SavedData.savePaymentStatus(false);
+                            SavedData.saveRatingStatus(true);
 
+
+                            S.I_clear(AmbulanceSummeryPage.this, CareGiverRatingActivity.class, bundle);
+
+                        } catch (JSONException e) {
+                            S.E("check exception" + e);
+                        }
 
                     } else {
 /*
@@ -959,6 +1017,8 @@ public class AmbulanceSummeryPage extends BaseActivity {
                             try {
 
                                 PayType = "online";
+
+
                                 paymentMode = "2";
 
                                 is_start_thread = false;
@@ -1029,7 +1089,11 @@ public class AmbulanceSummeryPage extends BaseActivity {
 
                             try {
                                 caregiverType = "2";
-                                PayType = "cash";
+                                if (remainAmount.getText().toString().equals("0"))
+                                PayType = "online";
+                                else
+                                    PayType = "cash";
+
                                 paymentMode = "1";
 
                                 is_start_thread = false;
@@ -1041,10 +1105,10 @@ public class AmbulanceSummeryPage extends BaseActivity {
                                 bundle.putString("StartTime", msg.getString("source_location"));
                                 bundle.putString("StopTime", msg.getString("destination_location"));
                                 bundle.putString("TotalTime", "");
-                                bundle.putString("PaymentMode", "cash");
+                                bundle.putString("PaymentMode", PayType);
                                 bundle.putString("caregiver_id", caregiver_id);
                                 SavedData.saveAmbulance(false);
-                                SavedData.savePayType("cash");
+                                SavedData.savePayType(PayType);
                                 SavedData.saveRatingStatus(true);
                                 // SavedData.saveMessageForsummery("");
                                 S.I_clear(AmbulanceSummeryPage.this, Client_RatingActivity.class, bundle);
@@ -1138,7 +1202,7 @@ public class AmbulanceSummeryPage extends BaseActivity {
             }
             String productName = "syzygy";
             String firstName = SavedData.getUserName();
-            transaction_id = "0nf7" + System.currentTimeMillis();
+            transaction_id = ""+System.currentTimeMillis();
             String email = SavedData.getUserEmail();
             String sUrl = "https://payumoney.com/mobileapp/payumoney/success.php";
             String fUrl = "https://payumoney.com/mobileapp/payumoney/failure.php";
@@ -1152,7 +1216,7 @@ public class AmbulanceSummeryPage extends BaseActivity {
             String key = Constants.PRODUCTION_MERCHANT_KEY;
             String merchantId = Constants.PRODUCTION_MERCHANT_ID;
             PayUmoneySdkInitializer.PaymentParam.Builder builder = new PayUmoneySdkInitializer.PaymentParam.Builder();
-              builder.setAmount(Double.parseDouble(totalAmount.getText().toString()))
+              builder.setAmount(Double.parseDouble(remainAmount.getText().toString()))
            // builder.setAmount(Double.parseDouble("10"))
                     .setTxnId(transaction_id)
                     .setPhone(phone)

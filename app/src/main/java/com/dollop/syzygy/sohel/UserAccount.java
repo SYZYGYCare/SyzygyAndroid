@@ -115,16 +115,29 @@ public class UserAccount {
         }
     }
 
-    public static boolean isEmpty(EditText... arg) {
-        for (int i = 0; i < arg.length; i++) {
-            if (arg[i].getText().length() <= 0) {
-                EditTextPointer = arg[i];
-                EditTextPointer.requestFocus();
-                EditTextPointer.setError("This can't be empty");
-                return false;
-            }
+    public static boolean isEmpty(EditText... arg)
+    {
+        try
+        {
+            for (int i = 0; i < arg.length; i++)
+            {
 
+                if (arg[i].getText().length() <= 0)
+                {
+                    EditTextPointer = arg[i];
+                    EditTextPointer.requestFocus();
+                    EditTextPointer.setError("This can't be empty");
+                    return false;
+                }
+
+            }
         }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+
         return true;
     }
 

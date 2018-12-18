@@ -74,8 +74,10 @@ public class CareGiverSignUpActivity extends BaseActivity {
                 strName = editName.getText().toString();
                 strPassword = editPassword.getText().toString();
                 strConfirmPassword = editConfirmPassword.getText().toString();
-                if (UserAccount.isEmpty(editName, editEmail, editPassword, editConfirmPassword)) {
-                    if (UserAccount.isEmailValid(editEmail)) {
+                if (UserAccount.isEmpty(editName, editEmail, editPassword, editConfirmPassword))
+                {
+                    if (UserAccount.isEmailValid(editEmail))
+                    {
                         if (strPassword.equals(strConfirmPassword)) {
                             CaregiverRegistration();
                         } else {
@@ -115,15 +117,17 @@ public class CareGiverSignUpActivity extends BaseActivity {
 
                 Log.e("response", "check" + response);
                 try {
+                    JSONObject ClientToken = null;
                     JSONObject mainobject = new JSONObject(response);
                     int status = mainobject.getInt("status");
                     String message = mainobject.getString("message");
                     if (status == 200) {
 
-                        JSONObject ClientToken = mainobject.getJSONObject("data");
-                        String clienttocken = ClientToken.getString("token");
+                       // if(mainobject.has("data"))
+                       //  ClientToken = mainobject.getJSONObject("data");
+                      //  String clienttocken = ClientToken.getString("token");
 
-                        String type = ClientToken.getString("user_type");
+                     //   String type = ClientToken.getString("user_type");
         /*                SavedData.saveTocken(clienttocken);
                         SavedData.saveTockenUserType("");
 

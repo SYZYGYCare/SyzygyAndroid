@@ -100,6 +100,7 @@ public class Const {
         public static String GET_USER_WALLET_BALANCE = host_Url + "get_user_wallet";
         public static String GET_USER_TOKEN= host_Url + "getUserToken";
         public static String GET_REMAINDER_DEFAULT_DATA = host_Url + "get_reminder_cat";
+        public static String GET_SCHEDULED_CAREGIVER_DATA = host_Url + "get_schedule_notification";
         public static String GET_REMAINDER_TYPE= host_Url + "get_reminder_care";
         public static String Update_Wallet = host_Url + "update_wallet";
         public static String Update_User_Wallet = host_Url + "update_user_wallet";

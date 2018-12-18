@@ -26,7 +26,7 @@
                 android:drawablePadding="@dimen/dimen_4dp"
                 android:hint="Full Name"
                 android:imeOptions="actionNext"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                 android:inputType="text" />
         </android.support.design.widget.TextInputLayout>
 
