@@ -59,7 +59,6 @@ public class Const {
         public static String UPDATE_CAREGIVER_LOCATION = host_Url + "updateCaregiverLatLong";
         public static String HiringConfirmation_Notification_Client = host_Url + "hiringConfirmationCleint";
         public static String GETSCHEDUAL_TIMEDATE = host_Url + "addScheduleNotification";
-
         public static String UPDATE_CAREGIVER = host_Url + "addDetailsCaregiver";
         ///////////////////////
         public static String GET_AMBULANCE_TYPE = host_Url + "getAmbulanceType";///////////

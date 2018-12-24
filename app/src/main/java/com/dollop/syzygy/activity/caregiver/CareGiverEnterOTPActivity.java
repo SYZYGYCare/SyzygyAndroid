@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.dollop.syzygy.R;
 import com.dollop.syzygy.activity.BaseActivity;
@@ -103,9 +104,7 @@ public class CareGiverEnterOTPActivity extends BaseActivity {
                         startActivity(intent);
                         finish();
                     } else {
-/*
-                        Toast.makeText(CareGiverEnterOTPActivity.this, "Otp Not Match..", Toast.LENGTH_SHORT).show();
-*/
+                        Toast.makeText(CareGiverEnterOTPActivity.this, "Please enter valid OTP.", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

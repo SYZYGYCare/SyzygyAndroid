@@ -5,6 +5,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -165,6 +166,12 @@ public class JSONParser {
                             return params;
                         }
                     };
+
+                    jsObjRequest.setRetryPolicy(new DefaultRetryPolicy(
+                            60000,
+                            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
                     // Adding request to request queue
                     AppController.getInstance().addToRequestQueue(jsObjRequest);
                 } else {
@@ -189,7 +196,8 @@ public class JSONParser {
                if (method == 0 || method == 1) {
                    final Dialog materialDialog = S.initProgressDialog(cx);
                    final StringRequest jsObjRequest = new StringRequest
-                           (method, url, new Response.Listener<String>() {
+                           (method, url, new Response.Listener<String>()
+                           {
                                @Override
                                public void onResponse(String response) {
                                    //M.E("Response: " + response.toString());
@@ -237,6 +245,12 @@ public class JSONParser {
                            return params;
                        }
                    };
+
+                   jsObjRequest.setRetryPolicy(new DefaultRetryPolicy(
+                           60000,
+                           DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                           DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
                    // Adding request to request queue
                    AppController.getInstance().addToRequestQueue(jsObjRequest);
                } else {
@@ -294,6 +308,12 @@ public class JSONParser {
                         return params;
                     }
                 };
+
+                jsObjRequest.setRetryPolicy(new DefaultRetryPolicy(
+                        60000,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
                 // Adding request to request queue
                 AppController.getInstance().addToRequestQueue(jsObjRequest);
 

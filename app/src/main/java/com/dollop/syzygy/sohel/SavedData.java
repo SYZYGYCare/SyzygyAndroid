@@ -28,6 +28,8 @@ public class SavedData {
     private static final String CLIENT_ID = "clientId";
     private static final String HIRE_CAREGIVER_ID = "hireCareGiverId";
     private static final String CAREGIVER_ID = "CareGiver_id";
+    private static final String HIRE_LATER_NOTIFICATION = "Hire_later_notification";
+    private static final String CANCEL_REQUEST_FROM_CLIENT = "cancel_request_from_client";
     private static final String CLIENT_GENDER = "client_gender";
     private static final String START_TIMER = "startTimer";
     private static final String TIMER_LAST_TIME = "timer_last_time";
@@ -494,6 +496,27 @@ public class SavedData {
         editor.apply();
     }
 
+    public static String getCancelRequestFromClient() {
+        return getInstance().getString(CANCEL_REQUEST_FROM_CLIENT, null);
+    }
+
+    public static void saveCancelRequestFromClient(String hireCareGiverId) {
+        SharedPreferences.Editor editor = getInstance().edit();
+        editor.putString(CANCEL_REQUEST_FROM_CLIENT, hireCareGiverId);
+        editor.apply();
+    }
+
+
+
+    public static String getHireLaterMessage() {
+        return getInstance().getString(HIRE_LATER_NOTIFICATION, null);
+    }
+
+    public static void saveHireLaterMessage(String hireCareGiverId) {
+        SharedPreferences.Editor editor = getInstance().edit();
+        editor.putString(HIRE_LATER_NOTIFICATION, hireCareGiverId);
+        editor.apply();
+    }
 
 
     public static String getCareGiverId() {

@@ -145,31 +145,27 @@ public class CareGiverUpdateProfile extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_save:
-                try
-                {
-                    if (UserAccount.isEmpty(caregiverUpdateProfileFullName, caregiverUpdateProfileemail))
-                    {
+                try {
+                    if (UserAccount.isEmpty(caregiverUpdateProfileFullName)) {
                         String add = caregiveraddress.getText().toString().trim();
                         String adh_num = caregiveraddarnumber.getText().toString().trim();
-
-                        if (add == null || add.equalsIgnoreCase(""))
+                        String email = caregiverUpdateProfileemail.getText().toString();
+                        if(email == null || email.equalsIgnoreCase("") || !UserAccount.isEmailValid(caregiverUpdateProfileemail))
                         {
-                            Toast.makeText(CareGiverUpdateProfile.this,"Please enter address",Toast.LENGTH_LONG).show();
-                        }else if (adh_num == null || adh_num.equalsIgnoreCase(""))
-                        {
-                            Toast.makeText(CareGiverUpdateProfile.this,"Please enter Adhar number",Toast.LENGTH_LONG).show();
+                            Toast.makeText(CareGiverUpdateProfile.this, "Please enter valid email", Toast.LENGTH_LONG).show();
                         }
-                        else
-                        {
+                       else if (add == null || add.equalsIgnoreCase("")) {
+                            Toast.makeText(CareGiverUpdateProfile.this, "Please enter address", Toast.LENGTH_LONG).show();
+                        } else if (adh_num == null || adh_num.equalsIgnoreCase("")) {
+                            Toast.makeText(CareGiverUpdateProfile.this, "Please enter Adhar number", Toast.LENGTH_LONG).show();
+                        } else {
                             updateProfile();
 
                         }
 
 
                     }
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
@@ -497,8 +493,7 @@ public class CareGiverUpdateProfile extends BaseActivity {
 
     @Override
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         // handle result of pick image chooser
         if (requestCode == CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {

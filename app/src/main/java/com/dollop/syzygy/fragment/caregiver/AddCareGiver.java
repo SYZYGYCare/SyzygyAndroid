@@ -146,7 +146,7 @@ public class AddCareGiver extends Fragment {
         uploaddocument = (TextView) view.findViewById(R.id.uploaddocument);
         ((CareGiverMainActivity) getActivity()).launchFragmentTitle("Add CareGiver");
         getServices();
-        getPreviousAmbulance_Data();
+
         uploaddocumentlayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -192,7 +192,7 @@ public class AddCareGiver extends Fragment {
             }
         });
 
-        getCityList();
+       // getCityList();
         caregiversppiner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -202,6 +202,7 @@ public class AddCareGiver extends Fragment {
                     specilization_id = "";
                     getSpecialiazation(service_id);
                     Specilizationlayout.setVisibility(View.VISIBLE);
+                    getCityList();
                 }
 
 
@@ -315,7 +316,7 @@ public class AddCareGiver extends Fragment {
     private Map<String, String> getParamCityName() {
         HashMap<String, String> params = new HashMap<>();
         params.put("token", SavedData.gettocken_id());
-
+        params.put("service_id", service_id);
         return params;
     }
 
@@ -610,9 +611,13 @@ public class AddCareGiver extends Fragment {
 //                        avi.setVisibility(View.GONE);
                         S.T(getActivity(), "NO data!");
                     }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+                getPreviousAmbulance_Data();
+
             }
         });
     }

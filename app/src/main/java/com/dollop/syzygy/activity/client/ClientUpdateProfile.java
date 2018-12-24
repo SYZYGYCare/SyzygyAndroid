@@ -35,6 +35,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.dollop.syzygy.R;
 import com.dollop.syzygy.activity.BaseActivity;
+import com.dollop.syzygy.activity.caregiver.CareGiverUpdateProfile;
 import com.dollop.syzygy.sohel.Const;
 import com.dollop.syzygy.sohel.Helper;
 import com.dollop.syzygy.sohel.JSONParser;
@@ -148,9 +149,20 @@ public class ClientUpdateProfile extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_save:
-                if (UserAccount.isEmpty(clientUpdateProfileFullName, clientUpdateProfileEmail, clientUpdateProfileAddress, clientUpdateProfileAadharNumber,clientUpdateProfileMobile)) {
+                if (UserAccount.isEmpty(clientUpdateProfileFullName, clientUpdateProfileAddress, clientUpdateProfileAadharNumber,clientUpdateProfileMobile)) {
 
-                    updateProfile();
+                    String email = clientUpdateProfileEmail.getText().toString();
+                    if(email == null || email.equalsIgnoreCase("") || !UserAccount.isEmailValid(clientUpdateProfileEmail))
+                    {
+
+                        Toast.makeText(ClientUpdateProfile.this, "Please enter valid email", Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        updateProfile();
+                    }
+
+
                 }
 
                 break;

@@ -12,6 +12,7 @@ import com.dollop.syzygy.activity.client.CheckListActivity;
 import com.dollop.syzygy.activity.client.ClientMainActivity;
 import com.dollop.syzygy.activity.client.HealthTipsActivity;
 import com.dollop.syzygy.activity.client.ReminderListActivity;
+import com.dollop.syzygy.fragment.client.ClientMainFragment;
 import com.dollop.syzygy.sohel.S;
 import com.dollop.syzygy.sohel.SavedData;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -124,6 +125,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     if (SavedData.gettockenUserType().equals("client")) {
                         cancelRequestFromCareGiver();
                     } else {
+                        SavedData.saveCancelRequestFromClient("yes");
                         cancelRequestFromClient();
                     }
                     break;
@@ -213,7 +215,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     private void NewReminderAdded() {
-        if (!NotificationUtils.isAppIsInBackground(getApplicationContext())) {
+        if ( ClientMainFragment.is_on_map) {
             Log.e("check if", "......");
             // app is not in foreground, broadcast the push message
             Intent pushNotification = new Intent(Config.PUSH_NOTIFICATION);
@@ -229,6 +231,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             // app is in background, show the notification in notification tray
             Intent resultIntent = new Intent(getApplicationContext(), ClientMainActivity.class);
             resultIntent.putExtra("message", message);
+            SavedData.saveHireLaterMessage(String.valueOf(message));
+
             S.E("message" + message);
 
             // check for image attachment

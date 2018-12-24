@@ -43,10 +43,10 @@ public class ScheduleActivity extends AppCompatActivity {
     ImageView back_button = null;
     LinearLayout main_layout = null;
     int width = 0, height = 0;
-TextView no_data_found = null;
-    Context ct= this;
+    TextView no_data_found = null;
+    Context ct = this;
 
-List<ScheduledCaregiverDTO> scheduledCaregiverDTOS = new ArrayList<>();
+    List<ScheduledCaregiverDTO> scheduledCaregiverDTOS = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,16 +71,14 @@ List<ScheduledCaregiverDTO> scheduledCaregiverDTOS = new ArrayList<>();
     }
 
 
-
     private void loadData() {
-        new JSONParser(this).parseVollyStringRequest(Const.URL.GET_SCHEDULED_CAREGIVER_DATA, 0, getParam(), new Helper() {
+        new JSONParser(this).parseVollyStringRequest(Const.URL.GET_SCHEDULED_CAREGIVER_DATA, 1, getParam(), new Helper() {
             @Override
             public void backResponse(String response) {
                 S.E("reminder data : " + response);
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    if (jsonObject.getString("status").equals("200"))
-                    {
+                    if (jsonObject.getString("status").equals("200")) {
 
                         JSONArray reminder_for = jsonObject.getJSONArray("data");
 
@@ -89,18 +87,13 @@ List<ScheduledCaregiverDTO> scheduledCaregiverDTOS = new ArrayList<>();
                         Type listtype = new TypeToken<List<ScheduledCaregiverDTO>>() {
                         }.getType();
                         scheduledCaregiverDTOS = gson.fromJson(arrayData.toString(), listtype);
-                        if(scheduledCaregiverDTOS!= null && scheduledCaregiverDTOS.size()>0)
-                        {
+                        if (scheduledCaregiverDTOS != null && scheduledCaregiverDTOS.size() > 0) {
                             Drawshedule();
-                        }
-                        else
-                        {
+                        } else {
                             no_data_found.setVisibility(View.VISIBLE);
                         }
 
-                    }
-                    else
-                    {
+                    } else {
                         no_data_found.setVisibility(View.VISIBLE);
                     }
                 } catch (JSONException e) {
@@ -120,108 +113,105 @@ List<ScheduledCaregiverDTO> scheduledCaregiverDTOS = new ArrayList<>();
     }
 
 
-    private void Drawshedule()
-    {
+    private void Drawshedule() {
         try {
 
             main_layout.removeAllViews();
 
-            for (int i = 0; i < scheduledCaregiverDTOS.size(); i++)
-            {
+            for (int i = 0; i < scheduledCaregiverDTOS.size(); i++) {
                 String[] date_time = scheduledCaregiverDTOS.get(i).getDate().split(" ");
 
 
+                RelativeLayout Accepted_layout = new RelativeLayout(ct);
+                RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                // lp.(width/30,width/30,width/30,width/30);
+                Accepted_layout.setLayoutParams(lp);
+                Accepted_layout.setBackgroundColor(getResources().getColor(R.color.white));
+                Accepted_layout.setPadding(width / 30, width / 30, width / 30, width / 30);
+                //  Accepted_layout.setBackgroundColor(Color.parseColor("#ffffff"));
+                Accepted_layout.setId(i + 1);
+                Accepted_layout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int index = v.getId();
+                        index = index - 1;
+                    }
+                });
 
 
-                    RelativeLayout Accepted_layout = new RelativeLayout(ct);
-                    RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                    // lp.(width/30,width/30,width/30,width/30);
-                    Accepted_layout.setLayoutParams(lp);
-                    Accepted_layout.setBackgroundColor(getResources().getColor(R.color.white));
-                    Accepted_layout.setPadding(width/30,width/30,width/30,width/30);
-                    //  Accepted_layout.setBackgroundColor(Color.parseColor("#ffffff"));
-                    Accepted_layout.setId(i + 1);
-                    Accepted_layout.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            int index = v.getId();
-                            index = index - 1;
-                        }
-                    });
+                CardView cardView = new CardView(ct);
+                cardView.setRadius(width / 30);
+                cardView.setLayoutParams(lp);
 
 
-                    CardView cardView = new CardView(ct);
-                    cardView.setRadius(width/30);
-                    cardView.setLayoutParams(lp);
+                LinearLayout Acceptdenylayout = new LinearLayout(ct);
+                lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                Acceptdenylayout.setLayoutParams(lp);
+                Acceptdenylayout.setOrientation(LinearLayout.VERTICAL);
 
 
-                    LinearLayout Acceptdenylayout = new LinearLayout(ct);
-                    lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                    Acceptdenylayout.setLayoutParams(lp);
-                    Acceptdenylayout.setOrientation(LinearLayout.VERTICAL);
+                TextView counselltime = new TextView(ct);
+                lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                lp.setMargins(width / 100, width / 100, width / 100, width / 100);
+                counselltime.setLayoutParams(lp);
+                counselltime.setText("Hire Type: " + scheduledCaregiverDTOS.get(i).getServiceName());
+                counselltime.setTextColor(Color.parseColor("#111111"));
+                counselltime.setTextSize(15);
+              //  counselltime.setTypeface(Typeface.DEFAULT_BOLD);
+                counselltime.setGravity(Gravity.CENTER);
 
 
-                    TextView counselltime = new TextView(ct);
-                    lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                    lp.setMargins(width/100,width/100,width/100,width/100);
-                    counselltime.setLayoutParams(lp);
-                    counselltime.setText("Type: "+scheduledCaregiverDTOS.get(i).getType());
-                    counselltime.setTextColor(Color.parseColor("#ffffff"));
-                    counselltime.setTextSize(16);
-                    counselltime.setTypeface(Typeface.DEFAULT_BOLD);
-                    counselltime.setGravity(Gravity.CENTER);
+                TextView Date = new TextView(ct);
+                lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                lp.setMargins(width / 100, width / 100, width / 100, width / 100);
+                Date.setLayoutParams(lp);
+                Date.setText("Date: " + scheduledCaregiverDTOS.get(i).getDate());
+                Date.setTextColor(Color.parseColor("#444444"));
+                Date.setTextSize(15);
+                Date.setGravity(Gravity.CENTER);
+
+                TextView Time = new TextView(ct);
+                lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                lp.setMargins(width / 100, width / 100, width / 100, width / 100);
+                Time.setLayoutParams(lp);
+                Time.setText("Time: " + scheduledCaregiverDTOS.get(i).getTime());
+                Time.setTextColor(Color.parseColor("#444444"));
+                Time.setTextSize(15);
+                Time.setGravity(Gravity.CENTER);
 
 
-                    TextView Duration = new TextView(ct);
-                    lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                    lp.setMargins(width/100,width/100,width/100,width/100);
-                    Duration.setLayoutParams(lp);
-                    Duration.setText("Service Id: "+scheduledCaregiverDTOS.get(i).getServiceId());
-                    Duration.setTextColor(Color.parseColor("#ffffff"));
-                    Duration.setTextSize(13);
-                    Duration.setGravity(Gravity.CENTER);
+                TextView ServiceId = new TextView(ct);
+                lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                lp.setMargins(width / 100, width / 100, width / 100, width / 100);
+                ServiceId.setLayoutParams(lp);
+                ServiceId.setText("Service Id: " + scheduledCaregiverDTOS.get(i).getServiceId());
+                ServiceId.setTextColor(Color.parseColor("#444444"));
+                ServiceId.setTextSize(15);
+                ServiceId.setGravity(Gravity.CENTER);
 
 
 
-                    TextView sessionleft = new TextView(ct);
-                    lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                    lp.setMargins(width/100,width/100,width/100,width/100);
-                    sessionleft.setLayoutParams(lp);
-                    sessionleft.setText("Service: "+scheduledCaregiverDTOS.get(i).getServiceId());
-                    sessionleft.setTextColor(Color.parseColor("#ffffff"));
-                    sessionleft.setTextSize(14);
-                    sessionleft.setGravity(Gravity.CENTER);
-
-                    TextView date_time_text = new TextView(ct);
-                    lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                    lp.setMargins(width/100,width/100,width/100,width/100);
-                    date_time_text.setLayoutParams(lp);
-                    date_time_text.setText("Date and Time: "+scheduledCaregiverDTOS.get(i).getDate() + " " +scheduledCaregiverDTOS.get(i).getTime());
-                    date_time_text.setTextColor(Color.parseColor("#ffffff"));
-                    date_time_text.setTextSize(14);
-                    date_time_text.setGravity(Gravity.CENTER);
-
-                    TextView spaclayout = new TextView(ct);
-                    lp = new RelativeLayout.LayoutParams(width, width / 50);
-                    spaclayout.setLayoutParams(lp);
+                TextView spaclayout = new TextView(ct);
+                lp = new RelativeLayout.LayoutParams(width, width / 30);
+                spaclayout.setLayoutParams(lp);
 
                 /*    Acceptdenylayout.addView(spaclayout);
                     Acceptdenylayout.addView(radiobutton);*/
-                    Acceptdenylayout.addView(counselltime);
-                    Acceptdenylayout.addView(Duration);
-                    Acceptdenylayout.addView(date_time_text);
-                    Acceptdenylayout.addView(sessionleft);
-                    Accepted_layout.addView(Acceptdenylayout);
-                    cardView.addView(Accepted_layout);
-                    main_layout.addView(cardView);
-                    main_layout.addView(spaclayout);
+                Acceptdenylayout.addView(counselltime);
+                Acceptdenylayout.addView(Date);
+                Acceptdenylayout.addView(Time);
+              //  Acceptdenylayout.addView(ServiceId);
+
+                Accepted_layout.addView(Acceptdenylayout);
+                cardView.addView(Accepted_layout);
+                main_layout.addView(cardView);
+                main_layout.addView(spaclayout);
 
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 
 
 }

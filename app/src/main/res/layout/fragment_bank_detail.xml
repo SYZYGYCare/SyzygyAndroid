@@ -177,7 +177,7 @@
                         android:layout_toRightOf="@+id/image"
                         android:gravity="center_vertical"
                         android:padding="@dimen/text_normal_padding"
-                        android:text="IFC Code"
+                        android:text="IFSC"
                         android:textColor="@color/text_secondary"
                         android:textSize="@dimen/text_size_small"
                         />

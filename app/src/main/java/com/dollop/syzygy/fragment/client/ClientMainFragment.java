@@ -170,7 +170,8 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
     double currentlong;
     boolean is_from_other = false;
     public static boolean is_first_time = false;
-
+    public static boolean is_on_map = false;
+    boolean is_start_ride = false;
     String phoneNumber = "0123456789";
     String reason, fromdate, todate;
     Marker marker;
@@ -251,6 +252,7 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
     private boolean serviceBound;
     private BroadcastReceiver mstopRegistrationBroadcastReceiver;
     private boolean isCareGiverAvaliable = false;
+    private boolean is_from_ambulance = false;
     private String mSelectedDateTime = "";
     private int day, month, year, hour, minute;
     private String currentDate = "";
@@ -342,11 +344,10 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
 //            timeInM += timerService.elapsedTime();
             if (TimerRunning) {
                 save_time = timeInM + timerService.elapsedTime();
-                if (save_time == 0)
-                {
+                if (save_time == 0) {
                     try {
                         String time = SavedData.getTimerTime();
-                        if (time!= null && !time.equalsIgnoreCase(""))
+                        if (time != null && !time.equalsIgnoreCase(""))
                             timeInM = Long.parseLong(SavedData.getTimerTime());
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -431,7 +432,8 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
                 mMap.addMarker(new MarkerOptions().position(place.getLatLng()).title(place.getName().toString()));
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(place.getLatLng()));
 
-                if (NetworkUtil.isNetworkAvailable(getActivity())) {
+                if (NetworkUtil.isNetworkAvailable(getActivity()))
+                {
                     caregiverSpecilizationRecycleview.setVisibility(View.GONE);
                     specializationLayout.setVisibility(View.GONE);
                     getCaregiverAcrordingLocation();
@@ -446,8 +448,6 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
                 Log.e("Tages", "An error occurred: " + status);
             }
         });
-
-
 
 
         if (!hasPermissions(getActivity(), PERMISSIONS)) {
@@ -516,6 +516,7 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
                 typeAmbulanceCareGiver = "2";
                 serviceId = "";
                 specializationId = "";
+                is_from_ambulance = true;
                 getCaregiverAcrordingLocation();
                 LinearTypeAmbulanceId.setVisibility(View.VISIBLE);
                 horizontalScrollView1.setVisibility(View.GONE);
@@ -550,6 +551,7 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
                 typeAmbulanceCareGiver = "1";
                 serviceId = "";
                 specializationId = "";
+                is_from_ambulance = false;
                 getCaregiverAcrordingLocation();
                 LinearTypeAmbulanceId.setVisibility(View.GONE);
                 horizontalScrollView1.setVisibility(View.VISIBLE);
@@ -743,7 +745,10 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
                                 timerService.startTimer();
                                 ClientupdateUIStartRun();
                                 SavedData.saveAcceptLayoutKeep(false);
-                            } else {
+                            } else
+                                {
+
+                                is_start_ride = true;
                                 LinearHiringconfirm.setVisibility(View.GONE);
                                 ridingStart.setVisibility(View.VISIBLE);
 
@@ -895,7 +900,8 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
                 new RecyclerItemClickListener(getActivity(), caregiverRecycleview, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        if (isCareGiverAvaliable) {
+                        if (isCareGiverAvaliable)
+                        {
                             S.E("position for product " + position);
 
 
@@ -1232,8 +1238,7 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
      * Method to select time from time picker
      ***********************/
     public void timeDialog() {
-        TimePickerDialog tpDialog = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener()
-        {
+        TimePickerDialog tpDialog = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
                 mSelectedTime = String.valueOf(hourOfDay + ":" + minute + ":00");
@@ -1251,6 +1256,7 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
     public void onResume() {
         super.onResume();
         try {
+            is_on_map = true;
             is_running = true;
             LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mRegistrationBroadcastReceiver, new IntentFilter(Config.REGISTRATION_COMPLETE));
             LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mRegistrationBroadcastReceiver, new IntentFilter(Config.PUSH_NOTIFICATION));
@@ -1282,6 +1288,7 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
 
     @Override
     public void onPause() {
+        is_on_map = false;
         LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mRegistrationBroadcastReceiver);
         super.onPause();
     }
@@ -1358,7 +1365,6 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
                 dialog.dismiss();
                 LinearHireestimate.setVisibility(View.VISIBLE);
                 linearHireDrawer.setVisibility(View.VISIBLE);
-
                 linearLayoutAmbulancenCareId.setVisibility(View.GONE);
                 horizontalScrollView1.setVisibility(View.GONE);
                 Intent intent = new Intent(getActivity(), ClientSeniorListActivity.class);
@@ -1372,7 +1378,6 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
                 dialog.dismiss();
                 LinearHireestimate.setVisibility(View.VISIBLE);
                 linearHireDrawer.setVisibility(View.VISIBLE);
-
                 linearLayoutAmbulancenCareId.setVisibility(View.GONE);
                 horizontalScrollView1.setVisibility(View.GONE);
             }
@@ -1637,9 +1642,15 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
                         // mMap.animateCamera(CameraUpdateFactory.zoomTo(17));
                     } else {
                         isCareGiverAvaliable = false;
-                        noInternetDialog(mainobject.getString("message"));
+                        if(is_from_ambulance)
+                        {
+                            noInternetDialog("No Ambulance found");
+                        }
+                        else
+                        {
+                            noInternetDialog("No Caregiver found");
+                        }
                     }
-
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -1657,13 +1668,40 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
     Handler handler_get_upad = new Handler();
 
     public Map<String, String> getParams2() {
+
+        String cityName = "";
+        try
+        {
+
+
+
+                Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
+                List<Address> addresses = geocoder.getFromLocation(Double.parseDouble(getlatitude),Double.parseDouble(getlongitude) , 1);
+
+                cityName = addresses.get(0).getLocality();
+
+
+
+
+      /*      String stateName = addresses.get(0).getAddressLine(1);
+            String countryName = addresses.get(0).getAddressLine(2);*/
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+
         HashMap<String, String> postParameters = new HashMap<>();
         postParameters.put("token", SavedData.gettocken_id());
         postParameters.put("latitude", getlatitude);
         postParameters.put("longitud", getlongitude);
+        postParameters.put("city_name", cityName);
         postParameters.put("type", typeAmbulanceCareGiver);
         postParameters.put("service_id", serviceId);
         postParameters.put("specialization", specializationId);
+
+
 
         return postParameters;
 
@@ -1791,8 +1829,11 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
         handlerContactRefershApi.postDelayed(runnableContactRefershApi, 30000);
     }
 
-    private Map<String, String> getParams3() {
+    private Map<String, String> getParams3()
+    {
         HashMap<String, String> hashMap = new HashMap<>();
+
+
         if (is_from_other) {
             hashMap.put("latitude", otherlatitude);
             hashMap.put("longitud", otherlongitude);
@@ -1800,13 +1841,13 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
             hashMap.put("latitude", getlatitude);
             hashMap.put("longitud", getlongitude);
         }
-
         hashMap.put("token", SavedData.gettocken_id());
         hashMap.put("type", typeAmbulanceCareGiver);
         hashMap.put("service_id", serviceId);
         hashMap.put("specialization", specializationId);
         hashMap.put("senior_id", seniorIdstr);
         hashMap.put("status", "booking");
+
         return hashMap;
     }
 
@@ -2585,7 +2626,8 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
                         locationUpdates = assignlistModel.getData().get(0);
 
 
-                        if (locationUpdates.getDest_lattitude() != null && !locationUpdates.getDest_lattitude().equalsIgnoreCase("")) {
+                        if (is_start_ride)
+                        {
                             LinearHiringconfirm.setVisibility(View.GONE);
                             ridingStart.setVisibility(View.VISIBLE);
                             SavedData.saveInWOrking("working");
@@ -2616,7 +2658,6 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
                     e.printStackTrace();
                     S.E("logprintStackTrace" + e);
                 }
-
 
 
                 handler_loc.postDelayed(new Runnable() {
@@ -2839,8 +2880,7 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
                             if (CareGiver_id == null || CareGiver_id.equalsIgnoreCase(""))
                                 SavedData.saveCareGiverId(userCurrentStatus.getCaregiverId());
 
-                            if (status != null && status.equalsIgnoreCase("accepted"))
-                            {
+                            if (status != null && status.equalsIgnoreCase("accepted")) {
                                 LinearHireConfirm.setVisibility(View.GONE);
                                 LinearHiringconfirm.setVisibility(View.VISIBLE);
                                 linearProgressIn.setVisibility(View.GONE);
@@ -2886,6 +2926,8 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
                             } else if (status != null && status.equalsIgnoreCase("start")) {
 
                                 String typeOfCaregiver = userCurrentStatus.getType();
+
+                                is_start_ride = true;
                                 if (typeOfCaregiver.equalsIgnoreCase("1")) {
                                     ((ClientMainActivity) getActivity()).getSupportActionBar().setHomeButtonEnabled(false);
 
@@ -3009,6 +3051,24 @@ public class ClientMainFragment extends Fragment implements GoogleApiClient.OnCo
                                     Intent intent1 = new Intent(getActivity(), Client_RatingActivity.class);
                                     intent1.putExtras(bundle);
                                     startActivity(intent1);
+                                } else {
+
+                                    String message = SavedData.getHireLaterMessage();
+                                    if (message != null && !message.equalsIgnoreCase("")) {
+                                        JSONObject jsonObject1 = new JSONObject(message);
+                                        JSONObject msg = jsonObject1.getJSONObject("msg");
+
+                                        getlatitude = msg.getString("latitude");
+                                        getlongitude = msg.getString("longitude");
+                                        specializationId = msg.getString("caregiver_specialization_id");
+                                        serviceId = msg.getString("service_id");
+                                        typeAmbulanceCareGiver = msg.getString("type");
+
+                                        newRerminderLaterDialog(getActivity(), "Reminder For Book Caregiver and Ambulance!Book Your appointment");
+
+                                        SavedData.saveHireLaterMessage("");
+                                    }
+
                                 }
 
 

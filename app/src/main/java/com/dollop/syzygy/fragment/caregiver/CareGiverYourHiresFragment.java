@@ -61,6 +61,12 @@ public class CareGiverYourHiresFragment extends Fragment {
     List<HireYourCaregiverModel> hireyourlist = new ArrayList<HireYourCaregiverModel>();
     @BindView(R.id.remainingAmount)
     TextView remainingAmount;
+
+    @BindView(R.id.pay_to_admin)
+    TextView pay_to_admin;
+
+    @BindView(R.id.earned_amount)
+    TextView earned_amount;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -227,7 +233,19 @@ public class CareGiverYourHiresFragment extends Fragment {
                     JSONObject mainobject = new JSONObject(response);
                     if (mainobject.getString("status").equals("200"))
                     {
-                        remainingAmount.setText(getString(R.string.rupyee_symbol) + " " + mainobject.getString("remaining amount") + " /-");
+                        String remain_amnt = mainobject.getString("remaining amount");
+                        if(remain_amnt.startsWith("-"))
+                        {
+                            remain_amnt = remain_amnt.replace("-","");
+                            pay_to_admin.setText("Pay to Admin");
+                            remainingAmount.setText(getString(R.string.rupyee_symbol) + " " + remain_amnt + " /-");
+                        }
+                        else
+                        {
+                            pay_to_admin.setText("Get from Admin");
+                            remainingAmount.setText(getString(R.string.rupyee_symbol) + " " + remain_amnt + " /-");
+                        }
+
                     } else {
 
                     }

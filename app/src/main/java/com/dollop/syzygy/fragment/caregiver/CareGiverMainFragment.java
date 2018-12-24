@@ -147,7 +147,7 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
     private GpsHelper gpsHelper;
     private boolean isFirstTime;
     private FusedLocationProviderClient mFusedLocationProviderClient;
-    private double pickupLat, pickupLong, destLat =0, destLong =0;
+    private double pickupLat, pickupLong, destLat = 0, destLong = 0;
     public static double old_pickupLat = 0, old_pickupLong = 0;
     private String FinalSource = "";
     private String FinalDestination = "";
@@ -157,7 +157,7 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
     public static float old_rotation = 0;
     public static boolean is_center = true;
     ImageView center_button = null;
-
+    boolean accept_req_running = false;
 
     public static boolean hasPermissions(Context context, String... permissions) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
@@ -275,6 +275,8 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
                         JSONObject msg = jsonObject.getJSONObject("msg");
 
                         if (msg.getString("user_type").equals("7")) {
+
+                            SavedData.saveCancelRequestFromClient("");
                             googleMap.clear();
                             buttonLayout.setVisibility(View.GONE);
                             buttonLayoutStart.setVisibility(View.GONE);
@@ -303,13 +305,10 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
                             buttomUserName.setText(full_name);
                             buttomUserNameStart.setText(full_name);
 
-                            if(gender == null || gender.equalsIgnoreCase("")|| gender.equalsIgnoreCase("null"))
-                            {
+                            if (gender == null || gender.equalsIgnoreCase("") || gender.equalsIgnoreCase("null")) {
                                 gender = SavedData.getClientGender();
 
-                            }
-                            else
-                            {
+                            } else {
                                 SavedData.saveClientGender(gender);
                             }
 
@@ -388,12 +387,16 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
         mainFragmentBtnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                acceptRequest();
 
-                pickupLat = Double.parseDouble(SavedData.getAcceptedLatitude());
-                pickupLong = Double.parseDouble(SavedData.getAcceptedLongitude());
+                if (accept_req_running == false)
+                {
+                    accept_req_running = true;
+                    pickupLat = Double.parseDouble(SavedData.getAcceptedLatitude());
+                    pickupLong = Double.parseDouble(SavedData.getAcceptedLongitude());
+                    acceptRequest();
+                    UpdateLocation();
+                }
 
-                UpdateLocation();
 
             }
         });
@@ -522,6 +525,11 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
                         //    SavedData.saveAcceptLayoutKeep(false);
                         stopServiceForClient();
                         UpdateLocation();
+
+                        buttonLayout.setVisibility(View.GONE);
+                        buttonLayoutStart.setVisibility(View.GONE);
+                        linearLayoutEndId.setVisibility(View.VISIBLE);
+
                     }
 
                 }
@@ -563,8 +571,7 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
 
             List<Marker> markers = new ArrayList<>();
 
-            if (SavedData.getSaveType().equals("2"))
-            {
+            if (SavedData.getSaveType().equals("2")) {
                 carMarker = googleMap.addMarker(new MarkerOptions()
                         .position(new LatLng(pickupLat, pickupLong))
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map_car)));
@@ -762,9 +769,7 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
                     JSONObject jsonObject = new JSONObject(response);
 
                     if (jsonObject.getString("status").equals("200")) {
-                        buttonLayout.setVisibility(View.GONE);
-                        buttonLayoutStart.setVisibility(View.GONE);
-                        linearLayoutEndId.setVisibility(View.VISIBLE);
+
                         try {
                             SavedData.saveSRCAmbulanceLatitude("" + origin_new.latitude);
                             SavedData.saveSRCAmbulanceLongitude("" + origin_new.longitude);
@@ -899,6 +904,7 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
             public void backResponse(String response) {
                 S.E("Accept Request responce : " + response);
                 try {
+                    accept_req_running = false;
                     SavedData.saveNotificationTIme("");
                     if (response != null && response.contains("already accepted")) {
                         buttonLayout.setVisibility(View.GONE);
@@ -915,7 +921,6 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
                             SavedData.saveAcceptLayoutKeep(true);
                             buttonLayout.setVisibility(View.GONE);
                             buttonLayoutStart.setVisibility(View.VISIBLE);
-
 
                         }
                     }
@@ -947,8 +952,7 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
     }
 
     @Override
-    public void onResume()
-    {
+    public void onResume() {
         super.onResume();
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mRegistrationBroadcastReceiver, new IntentFilter(Config.REGISTRATION_COMPLETE));
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mRegistrationBroadcastReceiver, new IntentFilter(Config.PUSH_NOTIFICATION));
@@ -957,9 +961,27 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
 
         try
         {
-            String time = SavedData.getNotificationTime();
-            if (time != null && !time.equalsIgnoreCase(""))
+
+            String cancel_req = SavedData.getCancelRequestFromClient();
+            if(cancel_req!= null && cancel_req.equalsIgnoreCase("yes"))
             {
+                SavedData.saveCancelRequestFromClient("");
+                googleMap.clear();
+                buttonLayout.setVisibility(View.GONE);
+                buttonLayoutStart.setVisibility(View.GONE);
+                SavedData.saveAcceptLayoutKeep(false);
+                S.T(getActivity(), "Request has been cancelled");
+                S.I_clear(getActivity(), CareGiverMainActivity.class, null);
+            }
+
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        try {
+            String time = SavedData.getNotificationTime();
+            if (time != null && !time.equalsIgnoreCase("")) {
                 long notii_time = Long.parseLong(time);
                 Date currentTime = Calendar.getInstance().getTime();
 
@@ -970,29 +992,25 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
                 long diffInSec = TimeUnit.MILLISECONDS.toSeconds(diffInMs);
 
 
-                if (diffInSec > 30)
-                {
+                if (diffInSec > 30) {
                     SavedData.saveNotificationTIme("");
-                    GetCurrentStatus();
+                    //  GetCurrentStatus();
                 } else {
 
-                    diffInSec = 30- diffInSec;
+                    diffInSec = 30 - diffInSec;
 
-                            Handler handler = new Handler();
+                    Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
 
-                            try
-                            {
+                            try {
                                 if (!SavedData.getAcceptLayout()) {
                                     buttonLayout.setVisibility(View.GONE);
                                     buttonLayoutStart.setVisibility(View.GONE);
                                     googleMap.clear();
                                 }
-                            }
-                            catch (Exception e)
-                            {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
 
@@ -1003,12 +1021,10 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
                     showRequest();
                 }
 
-            } else {
+            }/* else {
                 GetCurrentStatus();
-            }
-        }
-        catch (Exception e)
-        {
+            }*/
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -1026,6 +1042,8 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
         try {
             this.googleMap = googleMap1;
             setUpMap();
+
+            GetCurrentStatus();
 
             googleMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
 
@@ -1187,24 +1205,21 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
         rotate = location.getBearing();
 
 
-        if (is_processing == false)
-        {
+        if (is_processing == false) {
 
             try {
                 updateMarkerOnMap();
                 String caregiver_id = SavedData.getHireCareGiverId();
-                if (caregiver_id != null && !caregiver_id.equalsIgnoreCase(""))
-                {
+                if (caregiver_id != null && !caregiver_id.equalsIgnoreCase("")) {
                     is_processing = true;
                     UpdateLocation();
-                } else if (caregiverCurrentStatus != null)
-                {
+                } else if (caregiverCurrentStatus != null) {
                     if (caregiverCurrentStatus.getBookingstatus().equalsIgnoreCase("start") || caregiverCurrentStatus.getBookingstatus().equalsIgnoreCase("accepted")) {
                         is_processing = true;
                         UpdateLocation();
                     }
                 }
-               // Toast.makeText(getActivity(), "rotation : " + rotate, Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getActivity(), "rotation : " + rotate, Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -1330,8 +1345,7 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
     }
 
 
-    private void Update_Deny_status()
-    {
+    private void Update_Deny_status() {
         new JSONParser(getActivity()).parseVollyStringRequest(Const.URL.DENY_REQUEST, 1, getDeny_parameter(), new Helper() {
             public void backResponse(String response) {
                 if (response != null) {
@@ -1387,19 +1401,14 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
             prams.put("token", SavedData.gettocken_id());
             prams.put("lattitude", "" + pickupLat);
             prams.put("longitude", "" + pickupLong);
-            if (is_destination_done == false)
-            {
-                if(destLat == 0)
-                {
+            if (is_destination_done == false) {
+                if (destLat == 0) {
                     prams.put("dest_lattitude", "");
                     prams.put("dest_longitude", "");
+                } else {
+                    prams.put("dest_lattitude", "" + destLat);
+                    prams.put("dest_longitude", "" + destLong);
                 }
-                else
-                {
-                    prams.put("dest_lattitude", ""+destLat);
-                    prams.put("dest_longitude", ""+destLong);
-                }
-
 
 
                 //prams.put("dest_lattitude", "" + requestLatitude);
@@ -1447,12 +1456,10 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
                         CurrentStatusResponse assignlistModel = gson.fromJson(response, CurrentStatusResponse.class);
                         caregiverCurrentStatus = assignlistModel.getData().get(0);
 
-                        if (caregiverCurrentStatus != null)
-                        {
+                        if (caregiverCurrentStatus != null) {
                             SavedData.saveHireCareGiverId(caregiverCurrentStatus.getHireCaregiverId());
 
-                            if (caregiverCurrentStatus.getBookingstatus() != null && caregiverCurrentStatus.getBookingstatus().equalsIgnoreCase("accepted"))
-                            {
+                            if (caregiverCurrentStatus.getBookingstatus() != null && caregiverCurrentStatus.getBookingstatus().equalsIgnoreCase("accepted")) {
 
                                 rotate = 0;
                                 try {
@@ -1461,8 +1468,7 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
 
                                     destLat = Double.parseDouble(caregiverCurrentStatus.getLattitude());
                                     destLong = Double.parseDouble(caregiverCurrentStatus.getLongitude());
-                                } catch (Exception e)
-                                {
+                                } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                                 // destLat = Double.parseDouble(SavedData.getAcceptedLatitude());
@@ -1563,10 +1569,8 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
 
                                 try {
                                     typeOfCaregiver = caregiverCurrentStatus.getType();
-                                    if (typeOfCaregiver.equalsIgnoreCase("1"))
-                                    {
-                                        try
-                                        {
+                                    if (typeOfCaregiver.equalsIgnoreCase("1")) {
+                                        try {
                                             SavedData.saveAcceptLayoutKeep(false);
                                             if (SavedData.getSRCAmbulanceLatitude() != null && !SavedData.getSRCAmbulanceLatitude().equalsIgnoreCase("")) {
                                                 FinalSource = getCurrentLocation(Double.parseDouble(SavedData.getSRCAmbulanceLatitude()), Double.parseDouble(SavedData.getSRCAmbulanceLongitude()));
@@ -1596,9 +1600,7 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
                                             }
 
                                             stopServiceForClient2(0.0, FinalSource, FinalDestination);
-                                        }
-                                        catch (Exception e)
-                                        {
+                                        } catch (Exception e) {
                                             e.printStackTrace();
                                         }
                                         String responsee = SavedData.getCaregiverMessageForSummery();
@@ -1615,56 +1617,48 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
                                     } else {
                                         FinalSource = getCurrentLocation(Double.parseDouble(caregiverCurrentStatus.getLattitude()), Double.parseDouble(caregiverCurrentStatus.getLongitude()));
 
-                                       String client_id = SavedData.getClientId();
-                                       if(client_id == null || client_id.equalsIgnoreCase(""))
-                                       {
-                                           SavedData.saveClientId(caregiverCurrentStatus.getClientId());
-                                       }
+                                        String client_id = SavedData.getClientId();
+                                        if (client_id == null || client_id.equalsIgnoreCase("")) {
+                                            SavedData.saveClientId(caregiverCurrentStatus.getClientId());
+                                        }
 
-                                        String sour_lat =  SavedData.getSRCAmbulanceLatitude();
+                                        String sour_lat = SavedData.getSRCAmbulanceLatitude();
 
-                                        if(sour_lat == null || sour_lat.equalsIgnoreCase(""))
-                                        {
+                                        if (sour_lat == null || sour_lat.equalsIgnoreCase("")) {
                                             SavedData.saveSRCAmbulanceLatitude(caregiverCurrentStatus.getLattitude());
                                         }
 
-                                        String sour_long =  SavedData.getSRCAmbulanceLongitude();
+                                        String sour_long = SavedData.getSRCAmbulanceLongitude();
 
-                                        if(sour_long == null || sour_long.equalsIgnoreCase(""))
-                                        {
+                                        if (sour_long == null || sour_long.equalsIgnoreCase("")) {
                                             SavedData.saveSRCAmbulanceLongitude(caregiverCurrentStatus.getLongitude());
                                         }
 
-                                        String des_lat =  SavedData.getDestAmbulanceLatitude();
+                                        String des_lat = SavedData.getDestAmbulanceLatitude();
 
-                                        if(des_lat == null || des_lat.equalsIgnoreCase(""))
-                                        {
+                                        if (des_lat == null || des_lat.equalsIgnoreCase("")) {
                                             SavedData.saveDestAmbulanceLatitude(caregiverCurrentStatus.getLattitude());
                                         }
 
 
-                                        String des_long =  SavedData.getDESTAmbulanceLongitude();
+                                        String des_long = SavedData.getDESTAmbulanceLongitude();
 
-                                        if(des_long == null || des_long.equalsIgnoreCase(""))
-                                        {
+                                        if (des_long == null || des_long.equalsIgnoreCase("")) {
                                             SavedData.saveDESTAmbulanceLongitude(caregiverCurrentStatus.getLongitude());
                                         }
 
 
-                                       try
-                                       {
-                                           if (caregiverCurrentStatus.getDest_lattitude() == null || caregiverCurrentStatus.getDest_lattitude().equalsIgnoreCase("")) {
-                                               FinalDestination = getCurrentLocation(Double.parseDouble(SavedData.getDestAmbulanceLatitude()), Double.parseDouble(SavedData.getDESTAmbulanceLongitude()));
-                                           } else
-                                               FinalDestination = getCurrentLocation(Double.parseDouble(caregiverCurrentStatus.getDest_lattitude()), Double.parseDouble(caregiverCurrentStatus.getDest_longitude()));
-                                           stopServiceForClient2(0.0, FinalSource, FinalDestination);
-                                       }
-                                       catch (Exception e)
-                                       {
+                                        try {
+                                            if (caregiverCurrentStatus.getDest_lattitude() == null || caregiverCurrentStatus.getDest_lattitude().equalsIgnoreCase("")) {
+                                                FinalDestination = getCurrentLocation(Double.parseDouble(SavedData.getDestAmbulanceLatitude()), Double.parseDouble(SavedData.getDESTAmbulanceLongitude()));
+                                            } else
+                                                FinalDestination = getCurrentLocation(Double.parseDouble(caregiverCurrentStatus.getDest_lattitude()), Double.parseDouble(caregiverCurrentStatus.getDest_longitude()));
+                                            stopServiceForClient2(0.0, FinalSource, FinalDestination);
+                                        } catch (Exception e) {
 
-                                           stopServiceForClient2(0.0, FinalSource, FinalSource);
-                                           e.printStackTrace();
-                                       }
+                                            stopServiceForClient2(0.0, FinalSource, FinalSource);
+                                            e.printStackTrace();
+                                        }
                                     }
 
 
@@ -1762,7 +1756,6 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
             S.E("jsonObject ----   " + jsonObject.toString());
             JSONObject msg = jsonObject.getJSONObject("msg");
 
-
             is_destination_done = false;
             requestLatitude = msg.getString("latitude");
             requestLongitud = msg.getString("longitud");
@@ -1778,14 +1771,11 @@ public class CareGiverMainFragment extends Fragment implements OnMapReadyCallbac
             buttomUserName.setText(full_name);
             buttomUserNameStart.setText(full_name);
 
-            if(gender == null || gender.equalsIgnoreCase("")|| gender.equalsIgnoreCase("null"))
-            {
+            if (gender == null || gender.equalsIgnoreCase("") || gender.equalsIgnoreCase("null")) {
                 gender = SavedData.getClientGender();
 
-            }
-            else
-            {
-                 SavedData.saveClientGender(gender);
+            } else {
+                SavedData.saveClientGender(gender);
             }
 
             if (gender.equals("null")) {

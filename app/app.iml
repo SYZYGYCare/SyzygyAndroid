@@ -179,6 +179,7 @@
     <orderEntry type="library" exported="" name="Gradle: com.google.android.gms:play-services-clearcut-11.0.4" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="Gradle: com.android.support.test:runner-0.5" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.google.android.gms:play-services-tagmanager-11.0.4" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.theartofdev.edmodo:android-image-cropper-2.3.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="Gradle: com.android.support.test:exposed-instrumentation-api-publish-0.5" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.google.android.gms:play-services-vision-common-11.0.4" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.google.maps.android:android-maps-utils-0.5" level="project" />

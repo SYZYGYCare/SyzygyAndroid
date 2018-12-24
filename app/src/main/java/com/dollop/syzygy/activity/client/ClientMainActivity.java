@@ -273,8 +273,6 @@ public class ClientMainActivity extends BaseActivity
         {
             startService(new Intent(ClientMainActivity.this, LocationService.class));
         }
-
-
     }
 
     private void initMenuFragment() {
